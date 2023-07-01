@@ -366,14 +366,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    614
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    6 分
                 </div>
                 
 
@@ -397,17 +397,17 @@
 国内镜像下载：https://npm.taobao.org/mirrors/git-for-windows/v2.22.0.windows.1/Git-2.22.0-64-bit.exe
 国内其他版本下载：https://npm.taobao.org/mirrors/git-for-windows/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<img src="/post/undefined/1.png" class title="git-number1">
+<img src="/post/2c1/1.png" class title="git-number1">
 
 <p>1.1.2 git工具的安装没有特别需要注意的地方，只需要确定好自己想要安装的位置。打开命令行终端，输入下面命令查看是否安装成功。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/post/undefined/2.png" class title="git-number2">
+<img src="/post/2c1/2.png" class>
 
 <h4 id="1-2-Nodejs安装"><a href="#1-2-Nodejs安装" class="headerlink" title="1.2 Nodejs安装"></a>1.2 Nodejs安装</h4><p>1.2.1 下载地址，我查看教程最好是下载安装包，而不是压缩包</p>
 <pre class="line-numbers language-none"><code class="language-none">官网下载：http:&#x2F;&#x2F;nodejs.cn&#x2F;download&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/post/undefined/3.png" class title="nodejs-number1">
+<img src="/post/2c1/3.png" class>
 
 <p>1.2.2  Nodejs安装需要注意的点就是需要配置下面的图，将这些环境选择上</p>
 <blockquote>
@@ -418,7 +418,7 @@
 <li><code>Add to PATH</code>：添加到环境变量</li>
 </ul>
 </blockquote>
-<img src="/post/undefined/4.png" class title="nodejs-number2">
+<img src="/post/2c1/4.png" class>
 
 <p>1.2.3 其余的基本上默认下一步就可以，同时可以用下面的命令进行查看安装是否成功。</p>
 <blockquote>
@@ -427,7 +427,7 @@
 <pre class="line-numbers language-none"><code class="language-none">node -v
 npm -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<img src="/post/undefined/2-3.png" class title="nodejs-number3">
+<img src="/post/2c1/2-3.png" class>
 
 <p>1.2.4 npm的一些常用命令。</p>
 <pre class="line-numbers language-none"><code class="language-none">npm -v：查看npm安装的版本。
@@ -440,7 +440,80 @@ npm install &lt; name &gt; --save：安装的同时，将信息写入package.jso
 npm install &lt; name&gt; --save-dev：安装的同时，将信息写入package.json中项目路径中若是有package.json文件时，直接使用npm install方法就能够根据devDependencies配置安装全部的依赖包，这样代码提交到git时，就不用提交node_modules这个文件夹了。
 npm uninstall moudleName：卸载node模块。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="1-3-nodejs环境变量配置"><a href="#1-3-nodejs环境变量配置" class="headerlink" title="1.3 nodejs环境变量配置"></a>1.3 nodejs环境变量配置</h4><p>1.3.1 在nodejs的根目录下创建两个文件夹”node_global“和”node_cache“</p>
+<h4 id="1-3-nodejs环境变量配置"><a href="#1-3-nodejs环境变量配置" class="headerlink" title="1.3 nodejs环境变量配置"></a>1.3 nodejs环境变量配置</h4><p>1.3.1 在nodejs的根目录下创建两个文件夹”node_global“和”node_cache“。</p>
+
+
+<p>1.3.2 打开cmd命令行（最好用管理员权限打开，避免报错），执行下面的命令</p>
+<pre class="line-numbers language-none"><code class="language-none">npm config set prefix &quot;node_global的绝对路径&quot;
+npm config set cache &quot;node_cache的绝对路径&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>1.3.3 配置新建系统环境变量NODE_PATH以及将其写到path之中</p>
+<img src="/post/2c1/3-2.png" class>
+
+<img src="/post/2c1/3-3.png" class>
+
+<p>1.3.4 npm安装模块默认镜像源是国外，设置成国内镜像源</p>
+<pre class="line-numbers language-none"><code class="language-none">npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>​		这里有个我认为的坑点，就是下载cnpm代替默认的npm，但是后面安装模块都是npm，没有必要下cnpm。</p>
+<pre class="line-numbers language-none"><code class="language-none">cnpm下载：npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npmmirror.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="1-4-Git工具和Nodejs安装参考文章"><a href="#1-4-Git工具和Nodejs安装参考文章" class="headerlink" title="1.4 Git工具和Nodejs安装参考文章"></a>1.4 Git工具和Nodejs安装参考文章</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44893902/article/details/121788104?ops_request_misc=%7B%22request_id%22:%22168769282016782425191134%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=168769282016782425191134&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-121788104-null-null.142%5Ev88%5Ekoosearch_v1,239%5Ev2%5Einsert_chatgpt&utm_term=nodejs%E5%AE%89%E8%A3%85%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187">(84条消息) node.js安装及环境配置超详细教程【Windows系统安装包方式】_node安装配置_明金同学的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://hexoscript.gitbook.io/hexo-script/v/1.3-1/shi-yong-bu-zhou/yi-jian-an-zhuang-hexo-bo-ke">一键安装hexo博客 - hexo-script使用文档 (gitbook.io)</a></p>
+</blockquote>
+<h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><p>1.开始的教程缺少环境配置（上面的1.3），nodejs的一些环境配置没有完全</p>
+<p>解决方法：找了一篇其他人博客解决</p>
+<h3 id="2-Hexo安装和配置出现的问题"><a href="#2-Hexo安装和配置出现的问题" class="headerlink" title="2.Hexo安装和配置出现的问题"></a>2.Hexo安装和配置出现的问题</h3><h4 id="2-1-Hexo安装"><a href="#2-1-Hexo安装" class="headerlink" title="2.1 Hexo安装"></a>2.1 Hexo安装</h4><p>2.1.1 前面环境安装后，新建一个文件夹专门用来写博客相关文件的文件夹，在这个文件夹下打开前面安装的git(在文件夹下右键打开 git bash)，输入下面的命令进行安装。</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install -g hexo-cli
+hexo -v &#x2F;&#x2F;查看安装是否成功<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><u>这里我出现问题：</u></p>
+<p>   （1）发现输入hexo -v后没成功回显，开始以为没成功，后来发现要配置一下它的环境变量。</p>
+<pre class="line-numbers language-none"><code class="language-none">### 在path中添加下面的路径，你的node_global路径
+D:\blog\nodejs\node_global<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>​	（2）有些文章要去github上下install.sh的工具来下hexo—-&gt;可是我没成功就采用上面的方法。</p>
+<p>2.1.2 初始化hexo,去你准备存放博客相关文件的文件夹下</p>
+<pre class="line-numbers language-none"><code class="language-none">hexo init <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>2.1.3 hexo的一些简单命令</p>
+<pre class="line-numbers language-none"><code class="language-none">hexo g				&#x2F;&#x2F;将写好的文件进行打包
+hexo s				&#x2F;&#x2F;本地开启web服务，查看你当前搭建的博客并进行调整
+hexo clean			&#x2F;&#x2F;清除已经打包好的文件
+hexo new post 文件名	&#x2F;&#x2F;创建新文章
+hexo new page 页面名	&#x2F;&#x2F;创建新页面
+hexo d				&#x2F;&#x2F;将本地弄好的博客上传到github上<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_37781304/article/details/82729029?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-82729029-blog-121901433.235%5Ev35%5Epc_relevant_anti_vip&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-82729029-blog-121901433.235%5Ev35%5Epc_relevant_anti_vip&utm_relevant_index=2">(84条消息) hexo史上最全搭建教程_zjufangzh的博客-CSDN博客</a></p>
+</blockquote>
+<h3 id="3-博客简单配置和上传"><a href="#3-博客简单配置和上传" class="headerlink" title="3. 博客简单配置和上传"></a>3. 博客简单配置和上传</h3><p>3.1 需要注意的点：创建一个和你用户名相同的仓库，后面加.github.io，只有这样，将来要部署到GitHub page的时候，才会被识别，也就是xxxx.github.io，其中xxx就是你注册GitHub的用户名</p>
+<p>3.2 配置文件 <code>_config.yml</code>文件如下</p>
+<pre class="line-numbers language-none"><code class="language-none">deploy:
+  type: git
+  repo: 你创建的仓库地址.git	&#x2F;&#x2F;例如：https:&#x2F;&#x2F;github.com&#x2F;Liduan0&#x2F;Liduan0.github.io。git
+  branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>3.3 安装部署命令</p>
+<pre class="line-numbers language-none"><code class="language-none">npm install hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>3.4 使用前面的hexo基本命令进行文章的部署</p>
+<pre class="line-numbers language-none"><code class="language-none">hexo c 		&#x2F;&#x2F;清除打包好的文件
+hexo g 		&#x2F;&#x2F;重新打包文件，生成静态文章
+hexo d		&#x2F;&#x2F;部署文章上去<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>参考文章</p>
+<blockquote>
+<p>[(84条消息) hexo史上最全搭建教程_zjufangzh的博客-CSDN博客](</p>
+</blockquote>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>基本上一个简单博客搭建完成，后续的模板配置，不同模板配置都不一样需要自己根据文档进行配置。但是这里写下我配置模板过程中的一些问题和解决方法提供给需要的人进行参考。</p>
+<p><strong>问题描述</strong>：配置都是按照模板上的文档进行配置，但是出现找不到页面的情况。</p>
+<p>网上文章分析原因：</p>
+<p>（1）配置不全导致无法找到页面；</p>
+<p>（2）配置出错导致无法找到页面；</p>
+<p>（3）多刷新几次就会出来。</p>
+<p><strong>解决方法</strong>：我专门去生成静态文件的目录下，即文件夹【public】查看是否有相应的页面，都是存在的，刷新n次后还是没出来。后来直接将配置的js文件换个名字，重新调用成新命名的文件才将页面弄出来。</p>
 
                 
             </div>
