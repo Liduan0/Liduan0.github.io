@@ -341,12 +341,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">学习</span>
-                            </a>
-                        
                             <a href="/tags/Linux/">
                                 <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/Debian/">
+                                <span class="chip bg-color">Debian</span>
                             </a>
                         
                     </div>
@@ -357,8 +357,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                学习
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
                             </a>
                         
                     </div>
@@ -379,14 +379,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    53
+                    578
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -412,6 +412,97 @@
 <pre class="line-numbers language-none"><code class="language-none">deb http:&#x2F;&#x2F;http.kali.org&#x2F;kali kali-rolling main contrib non-free
 deb http:&#x2F;&#x2F;old.kali.org&#x2F;kali sana main non-free contrib<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<img src="/post/1e11/1.png" class>
+
+<ol start="2">
+<li>更新源</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">apt-get update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>出现下面的报错</p>
+<img src="/post/1e11/2.png" class>
+
+<p><strong>解决方法：</strong></p>
+<p>（1）我使用的是这个方法，就成功解决问题</p>
+<pre class="line-numbers language-none"><code class="language-none">wget -q -O - https:&#x2F;&#x2F;archive.kali.org&#x2F;archive-key.asc | apt-key add<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>（2）第一个方法不起作用，可以试试这个</p>
+<pre class="line-numbers language-none"><code class="language-none">apt-key adv --keyserver hkp:&#x2F;&#x2F;keys.gnupg.net --recv-keys ED444FF07D8D0BF6
+dpkg --configure -a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>安装MSF</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">apt-get install metasploit-framework<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="二、安装并配置postgresql数据库"><a href="#二、安装并配置postgresql数据库" class="headerlink" title="二、安装并配置postgresql数据库"></a>二、安装并配置postgresql数据库</h3><ol>
+<li>安装postgresql数据库（metasploit需要它支持）</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">apt-get install postgresql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/post/1e11/2-1.png" class>
+
+<ol start="2">
+<li>为postgresql安装时自动添加的postgres用户设置密码。</li>
+</ol>
+<p> <strong>注意</strong>：切换到postgres用户，如果报No directory, logging in with HOME&#x3D;&#x2F;，那么需要进行创建 ，并赋予权限，rw和可执行*</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo passwd postgres
+su postgres
+mkdir &#x2F;home&#x2F;postgres<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>在postgres用户进行数据库配置，创建metasploit的数据库和用户</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">createuser msf -P -S -R -D  #创建用户
+createdb -O msf msf         #创建数据库 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<img src="/post/1e11/2-3.png" class>
+
+<ol start="4">
+<li>检测能否连上postgresql数据库,我没有连接到</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">msfconsole 
+db_status
+连接正常显示： [*] postgresql connected to msf3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/1e11/2-4.png" class>
+
+<h3 id="三、配置metasploit数据库的连接"><a href="#三、配置metasploit数据库的连接" class="headerlink" title="三、配置metasploit数据库的连接"></a>三、配置metasploit数据库的连接</h3><ol>
+<li>在metasploit的安装目录下新建<code>database.yml</code>文件</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none"># 我的metasploit的安装目录：
+&#x2F;usr&#x2F;share&#x2F;metasploit-framework<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none"># 填写内容
+production:  
+   adapter: postgresql  
+   database: msf  
+   username: msf  
+   password: gg   # 自己设置的密码
+   host: 127.0.0.1  
+   port: 5432  
+   pool: 75  
+   timeout: 5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li><p>进入msf中执行下面命令</p>
+<pre class="line-numbers language-none"><code class="language-none">db_connect -y &#x2F;usr&#x2F;share&#x2F;metasploit-framework&#x2F;databa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>如果上面执行失败，数据库还是没有连接执行下面命令。使用非root用户执行MSF进行初始化。</p>
+</li>
+</ol>
+<p>   <strong>注意：</strong>初次运行msf会创建数据库，但是msf默认使用的PostgreSQL数据库不能与root用户关联，这也这也就是需要新建用户postgres来运行metasploit的原因所在。</p>
+<pre class="line-numbers language-none"><code class="language-none">msfdb reinit 	
+msfconsole
+db_status<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<img src="/post/1e11/3-2.png" class>
+
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30632883/article/details/99546882?ops_request_misc=&request_id=&biz_id=102&utm_term=debian%E5%AE%89%E8%A3%85msf&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-3-99546882.142%5Ev88%5Ekoosearch_v1,239%5Ev2%5Einsert_chatgpt&spm=1018.2226.3001.4187">(86条消息) Debian更新源加安装Metespolit&amp;&amp;Cobalt Strike_weixin_30632883的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.codenong.com/cs106677168/">Kali Linux 更新失败NO_PUBKEY ED444FF07D8D0BF6解决办法 | 码农家园 (codenong.com)</a></p>
+<p>[(86条消息) <a target="_blank" rel="noopener" href="https://blog.csdn.net/kjuhfkicf154/article/details/128667364?ops_request_misc=%7B%22request_id%22:%22168845882316782425196301%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=168845882316782425196301&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-5-128667364-null-null.142%5Ev88%5Ekoosearch_v1,239%5Ev2%5Einsert_chatgpt&utm_term=debian%E5%AE%89%E8%A3%85msf&spm=1018.2226.3001.4187">2023最新]Metasploit(MSF)下载安装及使用详解，永久免费使用，环境配置和使用技巧指南_msf软件_网络安全工程师教学的博客-CSDN博客</a></p>
+</blockquote>
 
                 
             </div>
@@ -476,12 +567,12 @@ deb http:&#x2F;&#x2F;old.kali.org&#x2F;kali sana main non-free contrib<span aria
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">学习</span>
-                                </a>
-                            
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/Debian/">
+                                    <span class="chip bg-color">Debian</span>
                                 </a>
                             
                         </div>
@@ -560,52 +651,50 @@ deb http:&#x2F;&#x2F;old.kali.org&#x2F;kali sana main non-free contrib<span aria
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/post/1e11.html">
+                <a href="/post/39bf.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Debian安装MSF">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Debian上安装jdk8">
                         
-                        <span class="card-title">Debian安装MSF</span>
+                        <span class="card-title">Debian上安装jdk8</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在Debian主机上安装msf
+                            Debian上安装jdk8
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-04
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-04
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    学习
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">学习</span>
-                    </a>
-                    
                     <a href="/tags/Linux/">
                         <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/Debian/">
+                        <span class="chip bg-color">Debian</span>
                     </a>
                     
                 </div>
