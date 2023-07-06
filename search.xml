@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Linux安装docker</title>
+      <link href="/post/f667.html"/>
+      <url>/post/f667.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="一、安装环境"><a href="#一、安装环境" class="headerlink" title="一、安装环境"></a>一、安装环境</h3><ul><li>一个 64 位操作系统。</li><li>一个 Linux 内核版本在 3.10 或更高版本。</li><li>系统需要安装 cgroups 和 aufs 以支持 Docker。</li><li>确保您的 Linux 用户具有对 Docker 的执行权限。</li></ul><h3 id="二、安装步骤"><a href="#二、安装步骤" class="headerlink" title="二、安装步骤"></a>二、安装步骤</h3><p><strong>备注：</strong>最好所有步骤都在root权限下执行</p><h4 id="一）Ubuntu上安装docker"><a href="#一）Ubuntu上安装docker" class="headerlink" title="(一）Ubuntu上安装docker"></a>(一）Ubuntu上安装docker</h4><p>1.安装依赖包</p><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/post/undefined/2-1.png" class><p>2.添加docker官方的GPG密钥</p><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/post/undefined/2-2.png" class><p>3.添加docker的稳定仓库</p><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/post/undefined/3.png" class><p>4.更新apt包，然后下载安装Docker CE</p><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">apt-get install docker-ce<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/post/undefined/4.png" class><p>5.查看是否安装成功以及一些实用的设置</p><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">systemctl status docker # 查看docker服务的状态systemctl start docker# 启动docker服务systemctl restart docker # 重启docker服务systemctl stop docker# 停止docker服务systemctl enable docker# 设置docker服务开机自启systemctl disable docker # 取消docker开机自启<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><img src="/post/undefined/5.png" class><p>6.设置国内源，创建或修改 &#x2F;etc&#x2F;docker&#x2F;daemon.json 文件。<strong>注意：</strong>使用官方源对我们而言可能很慢</p><p>Docker中国区官方源：<a href="https://registry.docker-cn.com/">https://registry.docker-cn.com</a></p><p>网易：<a href="http://hub-mirror.c.163.com/">http://hub-mirror.c.163.com</a></p><p>ustc ：<a href="https://docker.mirrors.ustc.edu.cn/">https://docker.mirrors.ustc.edu.cn</a></p><p>中国科技大学：<a href="https://docker.mirrors.ustc.edu.cn/">https://docker.mirrors.ustc.edu.cn</a></p><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">&#123;    "registry-mirrors": [        "http://hub-mirror.c.163.com",        "https://docker.mirrors.ustc.edu.cn",        "https://registry.docker-cn.com"    ]&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><img src="/post/undefined/6.png" class><ol><li>重启docker，然后查看是否成功</li></ol><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">systemctl restart docker docker info<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><img src="/post/undefined/7.png" class><h4 id="二）再CentOS系统上安装docker"><a href="#二）再CentOS系统上安装docker" class="headerlink" title="(二）再CentOS系统上安装docker"></a>(二）再CentOS系统上安装docker</h4><p>1.安装必要的软件包和存储库</p><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">sudo yum install -y yum-utils device-mapper-persistent-data lvm2sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>2.安装docker</p><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">sudo yum install docker-ce docker-ce-cli containerd.io<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>3.查看docker是否安装成功，同上面Ubuntu安装流程类似</p><h3 id="三、安装docker-compose"><a href="#三、安装docker-compose" class="headerlink" title="三、安装docker-compose"></a>三、安装docker-compose</h3><p>1.下载docker-compose二进制文件</p><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/post/undefined/8.png" class><p>2.添加执行权限，并查看docker-compose是否安装成功</p><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">chmod +x /usr/local/bin/docker-composedocker-compose<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><img src="/post/undefined/9.png" class><p>3.docker-compose的一些简单命令</p><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">docker-compose ps# 查看当前运行的镜像docker-compose up -d# 后台启动镜像docker-compose bulid# 打包镜像docker-compose config# 查看配置docker-compose pull# 下载镜像docker-compose stop # 停止镜像的运行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>4.下载vulnhub的靶场</p><pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">git clone https://github.com/vulhub/vulhub.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Debian上安装jdk8</title>
       <link href="/post/39bf.html"/>
       <url>/post/39bf.html</url>
