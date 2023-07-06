@@ -414,22 +414,22 @@
 <h4 id="一）Ubuntu上安装docker"><a href="#一）Ubuntu上安装docker" class="headerlink" title="(一）Ubuntu上安装docker"></a>(一）Ubuntu上安装docker</h4><p>1.安装依赖包</p>
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/post/undefined/2-1.png" class>
+<img src="/post/f667/2-1.png" class>
 
 <p>2.添加docker官方的GPG密钥</p>
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/post/undefined/2-2.png" class>
+<img src="/post/f667/2-2.png" class>
 
 <p>3.添加docker的稳定仓库</p>
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/post/undefined/3.png" class>
+<img src="/post/f667/3.png" class>
 
 <p>4.更新apt包，然后下载安装Docker CE</p>
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">apt-get install docker-ce<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/post/undefined/4.png" class>
+<img src="/post/f667/4.png" class>
 
 <p>5.查看是否安装成功以及一些实用的设置</p>
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">systemctl status docker # 查看docker服务的状态
@@ -439,7 +439,7 @@ systemctl stop docker		# 停止docker服务
 systemctl enable docker	# 设置docker服务开机自启
 systemctl disable docker # 取消docker开机自启<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/post/undefined/5.png" class>
+<img src="/post/f667/5.png" class>
 
 <p>6.设置国内源，创建或修改 &#x2F;etc&#x2F;docker&#x2F;daemon.json 文件。<strong>注意：</strong>使用官方源对我们而言可能很慢</p>
 <p>Docker中国区官方源：<a target="_blank" rel="noopener" href="https://registry.docker-cn.com/">https://registry.docker-cn.com</a></p>
@@ -454,7 +454,7 @@ systemctl disable docker # 取消docker开机自启<span aria-hidden="true" clas
     ]
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/post/undefined/6.png" class>
+<img src="/post/f667/6.png" class>
 
 <ol>
 <li>重启docker，然后查看是否成功</li>
@@ -462,7 +462,7 @@ systemctl disable docker # 取消docker开机自启<span aria-hidden="true" clas
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">systemctl restart docker 
 docker info<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<img src="/post/undefined/7.png" class>
+<img src="/post/f667/7.png" class>
 
 <h4 id="二）再CentOS系统上安装docker"><a href="#二）再CentOS系统上安装docker" class="headerlink" title="(二）再CentOS系统上安装docker"></a>(二）再CentOS系统上安装docker</h4><p>1.安装必要的软件包和存储库</p>
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">sudo yum install -y yum-utils device-mapper-persistent-data lvm2
@@ -475,13 +475,13 @@ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/dock
 <h3 id="三、安装docker-compose"><a href="#三、安装docker-compose" class="headerlink" title="三、安装docker-compose"></a>三、安装docker-compose</h3><p>1.下载docker-compose二进制文件</p>
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/post/undefined/8.png" class>
+<img src="/post/f667/8.png" class>
 
 <p>2.添加执行权限，并查看docker-compose是否安装成功</p>
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">chmod +x /usr/local/bin/docker-compose
 docker-compose<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<img src="/post/undefined/9.png" class>
+<img src="/post/f667/9.png" class>
 
 <p>3.docker-compose的一些简单命令</p>
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">docker-compose ps			# 查看当前运行的镜像

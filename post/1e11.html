@@ -489,9 +489,9 @@ production:
 <pre class="line-numbers language-none"><code class="language-none">db_connect -y &#x2F;usr&#x2F;share&#x2F;metasploit-framework&#x2F;databa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>如果上面执行失败，数据库还是没有连接执行下面命令。使用非root用户执行MSF进行初始化。</p>
+<p><strong>注意：</strong>初次运行msf会创建数据库，但是msf默认使用的PostgreSQL数据库不能与root用户关联，这也这也就是需要新建用户postgres来运行metasploit的原因所在。</p>
 </li>
 </ol>
-<p>   <strong>注意：</strong>初次运行msf会创建数据库，但是msf默认使用的PostgreSQL数据库不能与root用户关联，这也这也就是需要新建用户postgres来运行metasploit的原因所在。</p>
 <pre class="line-numbers language-none"><code class="language-none">msfdb reinit 	
 msfconsole
 db_status<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
