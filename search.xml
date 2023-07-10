@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>ssh文件配置</title>
+      <link href="/post/a8d6.html"/>
+      <url>/post/a8d6.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="一、ssh配置文件"><a href="#一、ssh配置文件" class="headerlink" title="一、ssh配置文件"></a>一、ssh配置文件</h3><p>1.设置ssh服务开机自启</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl <span class="token builtin class-name">enable</span> sshdsystemctl status sshd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><img src="/post/a8d6/1.png" class><p>2.配置允许root用户登录</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/ssh/sshd_config<span class="token comment">## 找到设置内容，并进行修改</span>PermitEmptyPasswords <span class="token function">yes</span>   <span class="token comment">#允许密码为空</span>PermitRootLogin <span class="token function">yes</span>   <span class="token comment">#允许root用户登录</span>PasswordAuthentication <span class="token function">yes</span> <span class="token comment">#密码登录开启</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><img src="/post/a8d6/2.png" class><p>3.其它一些重要配置（可修改）</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Port    <span class="token number">9527</span> <span class="token comment">#生产建议修改,默认22端口  </span> ListenAddress <span class="token function">ip</span><span class="token comment">#监听地址设置SSHD服务器绑定的IP 地址，0.0.0.0 表示侦听所有地址安全建议：如果主机不需要从公网ssh访问，可以把监听地址改为内网地址 这个值可以写成本地IP地址，也可以写成所有地址，即0.0.0.0 表示所有IP。</span> LoginGraceTime 2m<span class="token comment">#用来设定如果用户登录失败，在切断连接前服务器需要等待的时间，单位为秒</span>  StrictModes <span class="token function">yes</span>   <span class="token comment">#检查.ssh/文件的所有者，权限等</span> MaxAuthTries <span class="token comment">#用来设置最大失败尝试登陆次数为6</span>  MaxSessions  <span class="token number">10</span>         <span class="token comment">#同一个连接最大会话</span>PubkeyAuthentication <span class="token function">yes</span>     <span class="token comment">#基于key验证</span> PermitEmptyPasswords no      <span class="token comment">#密码验证当然是需要的！所以这里写 yes，也可以设置为 no，在真实的生产服务器上，根据不同安全级别要求，有的是设置不需要密码登陆的，通过认证的秘钥来登陆。</span>  PasswordAuthentication <span class="token function">yes</span>   <span class="token comment">#基于用户名和密码连接</span>GatewayPorts noClientAliveInterval <span class="token number">10</span> <span class="token comment">#单位:秒</span>ClientAliveCountMax <span class="token number">3</span> <span class="token comment">#默认3</span>UseDNS <span class="token function">yes</span> <span class="token comment">#提高速度可改为no   内网改为no  禁用反向解析</span>GSSAPIAuthentication <span class="token function">yes</span> <span class="token comment">#提高速度可改为no</span>MaxStartups    <span class="token comment">#未认证连接最大值，默认值10</span>Banner /path/file<span class="token comment">#以下可以限制可登录用户的办法：白名单  黑名单</span>AllowUsers user1 user2 user3@ip（限制主机）DenyUsers user1 user2 user3AllowGroups g1 g2DenyGroups g1 g2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="二、密钥登录"><a href="#二、密钥登录" class="headerlink" title="二、密钥登录"></a>二、密钥登录</h3><p>1.生成密钥</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/post/a8d6/3.png" class><p>2.密钥文件位置</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">用户目录下的.ssh文件夹中例如：C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>用户名<span class="token punctuation">\</span>.ssh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><img src="/post/a8d6/4.png" class><p>3.将公钥放到服务端中</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/root/.ssh/authorized_keys<span class="token comment">#这个文件中</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/post/a8d6/5.png" class><p>4.本地进行ssh连接验证</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> root@vps<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/post/a8d6/6.png" class>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> ssh </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux安装docker</title>
       <link href="/post/f667.html"/>
       <url>/post/f667.html</url>
