@@ -379,7 +379,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    576
+                    573
                 </div>
                 
 
@@ -464,14 +464,20 @@ docker info<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 
 <img src="/post/f667/7.png" class>
 
-<h4 id="二）再CentOS系统上安装docker"><a href="#二）再CentOS系统上安装docker" class="headerlink" title="(二）再CentOS系统上安装docker"></a>(二）再CentOS系统上安装docker</h4><p>1.安装必要的软件包和存储库</p>
+<h4 id="二）CentOS上安装docker"><a href="#二）CentOS上安装docker" class="headerlink" title="(二）CentOS上安装docker"></a>(二）CentOS上安装docker</h4><p>1.安装必要的软件包和存储库</p>
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<img src="/post/f667/3-1.png" class>
 
 <p>2.安装docker</p>
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">sudo yum install docker-ce docker-ce-cli containerd.io<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<img src="/post/f667/3-2.png" class>
+
 <p>3.查看docker是否安装成功，同上面Ubuntu安装流程类似</p>
+<img src="/post/f667/2-3.png" class>
+
 <h3 id="三、安装docker-compose"><a href="#三、安装docker-compose" class="headerlink" title="三、安装docker-compose"></a>三、安装docker-compose</h3><p>1.下载docker-compose二进制文件</p>
 <pre class="line-numbers language-plain" data-language="plain"><code class="language-plain">curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
