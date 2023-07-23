@@ -4,11 +4,38 @@
   
     
     <entry>
-      <title>实用命令</title>
+      <title>windows常用运行指令</title>
+      <link href="/post/7e18.html"/>
+      <url>/post/7e18.html</url>
+      
+        <content type="html"><![CDATA[<h4 id="Windows二十个常用运行指令"><a href="#Windows二十个常用运行指令" class="headerlink" title="Windows二十个常用运行指令"></a>Windows二十个常用运行指令</h4><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">winver        //查看Windows版本mstsc//远程桌面连接calc//打开计算器appwiz.cpl//打开程序和功能cleanmgr//打开磁盘清理工具cmd//打开cmd命令control//打开控制面板mspaint//打开画图面板osk//打开屏幕键盘regedit.exe//打开注册表编辑器wf.msc//打开高级安全Windows Defender防火墙taskschd.msc//打开任务计划程序wscript//打开Windows脚本宿主设置sysdm.cpl//打开系统属性snippingtool//打开截图工具slui//查看系统激活信息notepad//打开记事本mmc//打开控制台compmgmt.msc//打开计算机管理inetcol.cpl//打开internet属性<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> windows </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 命令 </tag>
+            
+            <tag> windows </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux实用命令</title>
       <link href="/post/ca0f.html"/>
       <url>/post/ca0f.html</url>
       
-        <content type="html"><![CDATA[<h3 id="一、命令-Screen"><a href="#一、命令-Screen" class="headerlink" title="一、命令-Screen"></a>一、命令-Screen</h3><h4 id="1-介绍："><a href="#1-介绍：" class="headerlink" title="1.介绍："></a>1.介绍：</h4><p>Screen 是一个全屏窗口管理器，它可以在多个进程之间多路复用一个物理终端。Screen 中有会话的概念，用户可以在一个会话中创建多个 screen 窗口，在每一个 screen 窗口中就像操作一个真实的 telent&#x2F;<a href="https://so.csdn.net/so/search?q=SSH&spm=1001.2101.3001.7020">SSH</a> 连接窗口那样。通俗的讲，screen 命令用于新建一个或多个“命令行窗口”在新建的这些“窗口”中，可以执行命令并且这些“窗口”都是独立并行的。</p><h4 id="2-命令使用"><a href="#2-命令使用" class="headerlink" title="2.命令使用"></a>2.命令使用</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">screen</span> <span class="token parameter variable">-S</span> 会话名称 <span class="token comment">#创建会话，并默认进入会话</span><span class="token function">screen</span> <span class="token parameter variable">-dms</span> 会话名称 <span class="token comment">#创建会话，但不进入会话</span><span class="token function">screen</span> <span class="token parameter variable">-ls</span>     <span class="token comment">#查看会话列表</span><span class="token function">screen</span> <span class="token parameter variable">-d</span> 会话名  <span class="token comment">#指定会话离线</span><span class="token function">screen</span> <span class="token parameter variable">-r</span> 会话名  <span class="token comment">#回复离线的会话</span><span class="token function">screen</span> <span class="token parameter variable">-X</span> <span class="token parameter variable">-S</span> 会话名 quit   <span class="token comment">#不在会话中，强制关闭会话</span><span class="token builtin class-name">exit</span><span class="token comment">#在会话中，退出当前会话并结束会话</span><span class="token function">screen</span> <span class="token parameter variable">-wipe</span><span class="token comment">#检查目前的会话状态，删除没有使用的会话</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<h3 id="一、命令-Screen"><a href="#一、命令-Screen" class="headerlink" title="一、命令-Screen"></a>一、命令-Screen</h3><h4 id="1-介绍："><a href="#1-介绍：" class="headerlink" title="1.介绍："></a>1.介绍：</h4><p>Screen 是一个全屏窗口管理器，它可以在多个进程之间多路复用一个物理终端。Screen 中有会话的概念，用户可以在一个会话中创建多个 screen 窗口，在每一个 screen 窗口中就像操作一个真实的 telent&#x2F;<a href="https://so.csdn.net/so/search?q=SSH&spm=1001.2101.3001.7020">SSH</a> 连接窗口那样。通俗的讲，screen 命令用于新建一个或多个“命令行窗口”在新建的这些“窗口”中，可以执行命令并且这些“窗口”都是独立并行的。</p><h4 id="2-命令使用"><a href="#2-命令使用" class="headerlink" title="2.命令使用"></a>2.命令使用</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">screen</span> <span class="token parameter variable">-S</span> 会话名称 <span class="token comment">#创建会话，并默认进入会话</span><span class="token function">screen</span> <span class="token parameter variable">-dms</span> 会话名称 <span class="token comment">#创建会话，但不进入会话</span><span class="token function">screen</span> <span class="token parameter variable">-ls</span>     <span class="token comment">#查看会话列表</span><span class="token function">screen</span> <span class="token parameter variable">-d</span> 会话名  <span class="token comment">#指定会话离线</span><span class="token function">screen</span> <span class="token parameter variable">-r</span> 会话名  <span class="token comment">#回复离线的会话</span><span class="token function">screen</span> <span class="token parameter variable">-X</span> <span class="token parameter variable">-S</span> 会话名 quit   <span class="token comment">#不在会话中，强制关闭会话</span><span class="token builtin class-name">exit</span><span class="token comment">#在会话中，退出当前会话并结束会话</span><span class="token function">screen</span> <span class="token parameter variable">-wipe</span><span class="token comment">#检查目前的会话状态，删除没有使用的会话</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="二、命令-创建root账户"><a href="#二、命令-创建root账户" class="headerlink" title="二、命令-创建root账户"></a>二、命令-创建root账户</h3><h4 id="1-普通创建流程"><a href="#1-普通创建流程" class="headerlink" title="1.普通创建流程"></a>1.普通创建流程</h4><p>1.1添加用户</p><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">adduser liduan //添加一个名为liduan的用户passwd tommy //修改密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><img src="/post/ca0f/2-1.jpg" class><p>1.2赋予用户root权限</p><p><strong>方法一：</strong></p><p>（1） 修改 &#x2F;etc&#x2F;sudoers 文件，添加下面的内容，把前面的注释（#）去掉</p><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">##</span> Allows people in group wheel to run all commands</span> %wheel ALL=(ALL) ALL<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>（2） 修改用户，使其属于root组（wheel），命令如下</p><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">usermod -g root liduan<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/post/ca0f/2-2.jpg" class><p><strong>方法二：</strong></p><p>（1） 直接修改 &#x2F;etc&#x2F;sudoers 文件，找到下面一行，在root下面添加一行</p><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">##</span> Allow root to run any commands anywhere</span>   root ALL=(ALL) ALL   liduan ALL=(ALL) ALL<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h4 id="2-一句话创建root账户"><a href="#2-一句话创建root账户" class="headerlink" title="2.一句话创建root账户"></a>2.一句话创建root账户</h4><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">useradd -p "passwd" username -o -u 0 -g root<span class="token title important"><span class="token punctuation">#</span> 参数说明</span>-p　　指定密码-u　　指定UID-g　　指定用户组-o　　一般情况下除了root的uid为0，其他的用户不可以为0，所以需要-o来强制<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
