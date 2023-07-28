@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>linux网卡配置</title>
+      <link href="/post/564b.html"/>
+      <url>/post/564b.html</url>
+      
+        <content type="html"><![CDATA[<p>1 找到&#x2F;etc&#x2F;network 文件</p><p>2 修改vi interfaces 文件</p><p>3 内容添加</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">### 设置动态ip</span>// 网卡IP地址配置的是否正确是两台服务器是否可以相互通信的前提。填写对应网卡auto eth0// 动态分配则加上iface eth0 inet dhcp<span class="token comment">### 设置静态ip</span>auto wlan0iface wlan0 inet staticaddress <span class="token number">192.168</span>.1.100  // IP地址netmask <span class="token number">255.255</span>.255.0  // 子网掩码gateway <span class="token number">192.168</span>.1.1    // 网关<span class="token comment">#### 下面可以忽略</span>wpa-ssid your-ssid     // SSID名称wpa-psk your-password // 密码（使用WPA/2 PSK加密）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>4  最后重新启动配置</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart networking<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>5 重新启动还是失败，使用下面命令开启对应网卡</p><pre class="line-numbers language-python" data-language="python"><code class="language-python">ifup <span class="token operator">-</span>v eth0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> 网卡 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python学习-爬取网页数据</title>
+      <link href="/post/2110.html"/>
+      <url>/post/2110.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="一、find-x2F-find-all-方法爬取数据"><a href="#一、find-x2F-find-all-方法爬取数据" class="headerlink" title="一、find()&#x2F;find_all()方法爬取数据"></a>一、find()&#x2F;find_all()方法爬取数据</h3><p>利用find方法爬取数据需要使用第三方库beautifulsoup来解析HTML文档并提取数据</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#### find()/find_all()方法之间的区别</span>find<span class="token punctuation">(</span><span class="token punctuation">)</span>: 返回符合条件查找的第一个标签find_all<span class="token punctuation">(</span><span class="token punctuation">)</span>: 返回所有符合条件的标签    //一般用来批量输出网页中的数据<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><strong>代码例子</strong></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">from bs4 <span class="token function">import</span> BeautifulSoup<span class="token comment"># 假设html_content是一个包含HTML数据的字符串</span>html_content <span class="token operator">=</span> <span class="token string">''</span>'<span class="token operator">&lt;</span>html<span class="token operator">></span>    <span class="token operator">&lt;</span>body<span class="token operator">></span>        <span class="token operator">&lt;</span>div <span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">"container"</span><span class="token operator">></span>            <span class="token operator">&lt;</span>h1 <span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">"title"</span><span class="token operator">></span>Hello, World<span class="token operator">!</span><span class="token operator">&lt;</span>/h<span class="token operator"><span class="token file-descriptor important">1</span>></span>            <span class="token operator">&lt;</span>p<span class="token operator">></span>This is a sample paragraph.<span class="token operator">&lt;</span>/p<span class="token operator">></span>            <span class="token operator">&lt;</span>a <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">"https://example.com"</span> <span class="token assign-left variable">target</span><span class="token operator">=</span><span class="token string">"_blank"</span><span class="token operator">></span>Visit Example<span class="token operator">&lt;</span>/a<span class="token operator">></span>        <span class="token operator">&lt;</span>/div<span class="token operator">></span>    <span class="token operator">&lt;</span>/body<span class="token operator">></span><span class="token operator">&lt;</span>/html<span class="token operator">></span><span class="token string">''</span>'<span class="token comment"># 创建BeautifulSoup对象并指定解析器</span>soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span>html_content, <span class="token string">'html.parser'</span><span class="token punctuation">)</span><span class="token comment"># 使用find方法查找第一个指定的标签</span>a_tag <span class="token operator">=</span> soup.find<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token comment"># 获取a标签的href属性值</span>href <span class="token operator">=</span> a_tag<span class="token punctuation">[</span><span class="token string">'href'</span><span class="token punctuation">]</span>print<span class="token punctuation">(</span>href<span class="token punctuation">)</span>  <span class="token comment"># 输出：https://example.com</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="1-查找指定标签"><a href="#1-查找指定标签" class="headerlink" title="1 查找指定标签"></a>1 查找指定标签</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">tag <span class="token operator">=</span> soup.find<span class="token punctuation">(</span><span class="token string">'标签名'</span><span class="token punctuation">)</span>   //查找对应标签的数据tag <span class="token operator">=</span> soup.find<span class="token punctuation">(</span><span class="token string">'标签名'</span>, <span class="token punctuation">&#123;</span><span class="token string">'属性'</span><span class="token builtin class-name">:</span> <span class="token string">'属性值'</span><span class="token punctuation">&#125;</span>  //查找符合条件的标签例子：soup.find<span class="token punctuation">(</span><span class="token string">'a'</span>, <span class="token punctuation">&#123;</span><span class="token string">'id'</span><span class="token builtin class-name">:</span> <span class="token string">'gug'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>   //查找符合条件属性id<span class="token operator">=</span>gug的a标签<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h4 id="2-返回标签中的属性值"><a href="#2-返回标签中的属性值" class="headerlink" title="2 返回标签中的属性值"></a>2 返回标签中的属性值</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">// 查找到对应标签后href <span class="token operator">=</span> tag<span class="token punctuation">[</span><span class="token string">'href'</span><span class="token punctuation">]</span>     // 获取标签href属性的值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h4 id="3-获取标签中的文本内容"><a href="#3-获取标签中的文本内容" class="headerlink" title="3 获取标签中的文本内容"></a>3 获取标签中的文本内容</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">// 查找到对应标签后text <span class="token operator">=</span> tag.text<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> 学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>windows常用运行指令</title>
       <link href="/post/7e18.html"/>
       <url>/post/7e18.html</url>
