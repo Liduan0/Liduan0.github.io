@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>python学习-参数设置</title>
+      <link href="/post/a6a2.html"/>
+      <url>/post/a6a2.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="一、命令行参数"><a href="#一、命令行参数" class="headerlink" title="一、命令行参数"></a>一、命令行参数</h3><p>python利用内置的argparse模块来帮助处理命令行参数，例子如下</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">import</span> argparse<span class="token comment"># 创建参数解析对象</span>parser <span class="token operator">=</span> argparse.ArgumentParser<span class="token punctuation">(</span>description<span class="token operator">=</span><span class="token string">'命令行设置例子'</span><span class="token punctuation">)</span><span class="token comment"># 添加参数</span>parser.add_argument<span class="token punctuation">(</span><span class="token string">'name'</span>, <span class="token assign-left variable">type</span><span class="token operator">=</span>str, <span class="token assign-left variable">help</span><span class="token operator">=</span><span class="token string">'姓名参数'</span><span class="token punctuation">)</span>parser.add_argument<span class="token punctuation">(</span><span class="token string">'-a'</span>, <span class="token string">'--age'</span>, <span class="token assign-left variable">type</span><span class="token operator">=</span>int, <span class="token assign-left variable">help</span><span class="token operator">=</span><span class="token string">'年龄参数'</span><span class="token punctuation">)</span><span class="token comment"># 解析命令行参数</span>args <span class="token operator">=</span> parser.parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment"># 使用参数</span>print<span class="token punctuation">(</span><span class="token string">"姓名:"</span>, args.name<span class="token punctuation">)</span>print<span class="token punctuation">(</span><span class="token string">"年龄:"</span>, args.age<span class="token punctuation">)</span><span class="token comment"># 常见命令参数</span>字符串参数（String Arguments）：可以简写为 <span class="token parameter variable">-s</span> 或 --string。整数参数（Integer Arguments）：可以简写为 <span class="token parameter variable">-i</span> 或 --integer。浮点数参数（Float Arguments）：可以简写为 <span class="token parameter variable">-f</span> 或 --float。布尔参数（Boolean Arguments）：可以简写为 <span class="token parameter variable">-b</span> 或 --bool。列表参数（List Arguments）：可以简写为 <span class="token parameter variable">-l</span> 或 --list。文件路径参数（File Path Arguments）：可以简写为 <span class="token parameter variable">-p</span> 或 --path。目录路径参数（Directory Path Arguments）：可以简写为 <span class="token parameter variable">-d</span> 或 --dir。枚举参数（Enumerated Arguments）：可以简写为 <span class="token parameter variable">-e</span> 或 --enum。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python学习-分离URL部分</title>
+      <link href="/post/dcc1.html"/>
+      <url>/post/dcc1.html</url>
+      
+        <content type="html"><![CDATA[<h3 id="一、完整分离url部分"><a href="#一、完整分离url部分" class="headerlink" title="一、完整分离url部分"></a>一、完整分离url部分</h3><p>使用python中的模块将url解析成ParseResult对象，通过对象的属性获取各个部分的值</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 使用下面模块将url转化为对象</span>from urllib.parse <span class="token function">import</span> urlparseurl <span class="token operator">=</span> <span class="token string">"https://www.example.com/admin/page?query=string#fragment"</span>parsed_url <span class="token operator">=</span> urlparse<span class="token punctuation">(</span>url<span class="token punctuation">)</span>  <span class="token comment"># 将url解析成对象</span>scheme <span class="token operator">=</span> parsed_url.scheme  <span class="token comment"># 获取协议</span>netloc <span class="token operator">=</span> parsed_url.netloc  <span class="token comment"># 获取域名</span>path <span class="token operator">=</span> parsed_url.path  <span class="token comment"># 获取路径</span>params <span class="token operator">=</span> parsed_url.params  <span class="token comment"># 参数</span>query <span class="token operator">=</span> parsed_url.query  <span class="token comment"># 查询字符串</span>fragment <span class="token operator">=</span> parsed_url.fragment  <span class="token comment"># 锚点</span>print<span class="token punctuation">(</span><span class="token string">"Scheme:"</span>, scheme<span class="token punctuation">)</span>print<span class="token punctuation">(</span><span class="token string">"Netloc:"</span>, netloc<span class="token punctuation">)</span>print<span class="token punctuation">(</span><span class="token string">"Path:"</span>, path<span class="token punctuation">)</span>print<span class="token punctuation">(</span><span class="token string">"Params:"</span>, params<span class="token punctuation">)</span>print<span class="token punctuation">(</span><span class="token string">"Query:"</span>, query<span class="token punctuation">)</span>print<span class="token punctuation">(</span><span class="token string">"Fragment:"</span>, fragment<span class="token punctuation">)</span><span class="token comment">### 输出内容为</span>Scheme: httpsNetloc: www.example.comPath: /admin/pageParams: Query: <span class="token assign-left variable">query</span><span class="token operator">=</span>stringFragment: fragment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> url分离 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux网卡配置</title>
       <link href="/post/564b.html"/>
       <url>/post/564b.html</url>
