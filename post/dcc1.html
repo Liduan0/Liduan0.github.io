@@ -379,7 +379,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    150
+                    234
                 </div>
                 
 
@@ -433,6 +433,17 @@ Path: /admin/page
 Params: 
 Query: <span class="token assign-left variable">query</span><span class="token operator">=</span>string
 Fragment: fragment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="二、url域名分离"><a href="#二、url域名分离" class="headerlink" title="二、url域名分离"></a>二、url域名分离</h3><p>tldextract 是一个 Python 库，用于提取 URL 或域名中的顶级域名、二级域名和子域名</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">import</span> tldextract
+
+data <span class="token operator">=</span> <span class="token string">"https://www.example.com"</span>
+result <span class="token operator">=</span> tldextract.extract<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+
+print<span class="token punctuation">(</span>result<span class="token punctuation">)</span>  <span class="token comment"># 输出: ExtractResult(subdomain='www', domain='example', suffix='com')</span>
+print<span class="token punctuation">(</span>result.subdomain<span class="token punctuation">)</span>  <span class="token comment"># 输出: "www"，子域名</span>
+print<span class="token punctuation">(</span>result.domain<span class="token punctuation">)</span>  <span class="token comment"># 输出: "example"，二级域名</span>
+print<span class="token punctuation">(</span>result.suffix<span class="token punctuation">)</span>  <span class="token comment"># 输出: "com"，顶级域名</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
