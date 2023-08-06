@@ -379,14 +379,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    325
+                    501
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -445,6 +445,49 @@ href <span class="token operator">=</span> tag<span class="token punctuation">[<
 
 <h4 id="3-获取标签中的文本内容"><a href="#3-获取标签中的文本内容" class="headerlink" title="3 获取标签中的文本内容"></a>3 获取标签中的文本内容</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">// 查找到对应标签后
 text <span class="token operator">=</span> tag.text<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="二、爬取xml网页数据"><a href="#二、爬取xml网页数据" class="headerlink" title="二、爬取xml网页数据"></a>二、爬取xml网页数据</h3><p>可以使用ElementTree对象的find()方法来查找对应的元素</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 例子一</span>
+<span class="token keyword">import</span> xml<span class="token punctuation">.</span>etree<span class="token punctuation">.</span>ElementTree <span class="token keyword">as</span> ET
+<span class="token keyword">import</span> requests
+
+<span class="token comment"># 发送GET请求获取XML数据</span>
+url <span class="token operator">=</span> <span class="token string">"http://www.example.com/data.xml"</span>
+response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+xml_data <span class="token operator">=</span> response<span class="token punctuation">.</span>content
+
+<span class="token comment"># 解析XML数据</span>
+root <span class="token operator">=</span> ET<span class="token punctuation">.</span>fromstring<span class="token punctuation">(</span>xml_data<span class="token punctuation">)</span>
+
+<span class="token comment"># 查找name元素</span>
+name_element <span class="token operator">=</span> root<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">".//str[@name='name']"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 提取name元素的值</span>
+name_value <span class="token operator">=</span> name_element<span class="token punctuation">.</span>text
+
+<span class="token comment"># 打印name的值</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>name_value<span class="token punctuation">)</span>
+
+<span class="token comment"># 例子二</span>
+<span class="token keyword">import</span> xml<span class="token punctuation">.</span>etree<span class="token punctuation">.</span>ElementTree <span class="token keyword">as</span> ET
+<span class="token keyword">import</span> requests
+
+<span class="token comment"># 发送GET请求获取XML数据</span>
+url <span class="token operator">=</span> <span class="token string">"http://www.example.com/data.xml"</span>
+response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+xml_data <span class="token operator">=</span> response<span class="token punctuation">.</span>content
+
+<span class="token comment"># 解析XML数据</span>
+root <span class="token operator">=</span> ET<span class="token punctuation">.</span>fromstring<span class="token punctuation">(</span>xml_data<span class="token punctuation">)</span>
+
+<span class="token comment"># 查找title元素</span>
+arr_element <span class="token operator">=</span> root<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">".//arr[@name='title']"</span><span class="token punctuation">)</span>
+str_elements <span class="token operator">=</span> arr_element<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">"str"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 遍历所有str元素，提取并打印值</span>
+<span class="token keyword">for</span> str_element <span class="token keyword">in</span> str_elements<span class="token punctuation">:</span>
+    value <span class="token operator">=</span> str_element<span class="token punctuation">.</span>text
+    <span class="token keyword">print</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
