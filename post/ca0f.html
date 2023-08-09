@@ -379,14 +379,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    474
+                    506
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -412,7 +412,8 @@
 <span class="token function">screen</span> <span class="token parameter variable">-r</span> 会话名			  <span class="token comment">#回复离线的会话</span>
 <span class="token function">screen</span> <span class="token parameter variable">-X</span> <span class="token parameter variable">-S</span> 会话名 quit 	  <span class="token comment">#不在会话中，强制关闭会话</span>
 <span class="token builtin class-name">exit</span>						<span class="token comment">#在会话中，退出当前会话并结束会话</span>
-<span class="token function">screen</span> <span class="token parameter variable">-wipe</span>				<span class="token comment">#检查目前的会话状态，删除没有使用的会话</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">screen</span> <span class="token parameter variable">-wipe</span>				<span class="token comment">#检查目前的会话状态，删除没有使用的会话</span>
+<span class="token function">screen</span> -ls<span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'NR>=2&amp;&amp;NR&lt;=20&#123;print $1&#125;'</span><span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'&#123;print "screen -S "$1" -X quit"&#125;'</span><span class="token operator">|</span><span class="token function">sh</span>			<span class="token comment">#强制关闭所有会话</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="二、命令-创建root账户"><a href="#二、命令-创建root账户" class="headerlink" title="二、命令-创建root账户"></a>二、命令-创建root账户</h3><h4 id="1-普通创建流程"><a href="#1-普通创建流程" class="headerlink" title="1.普通创建流程"></a>1.普通创建流程</h4><p>1.1添加用户</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">adduser liduan 			//添加一个名为liduan的用户
@@ -423,7 +424,7 @@ passwd tommy 				//修改密码<span aria-hidden="true" class="line-numbers-rows
 <p>1.2赋予用户root权限</p>
 <p><strong>方法一：</strong></p>
 <p>（1） 修改 &#x2F;etc&#x2F;sudoers 文件，添加下面的内容，把前面的注释（#）去掉</p>
-<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">##</span> Allows people in group wheel to run all commands</span>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span>Allows people in group wheel to run all commands</span>
  %wheel ALL=(ALL) ALL<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>（2） 修改用户，使其属于root组（wheel），命令如下</p>
@@ -433,12 +434,12 @@ passwd tommy 				//修改密码<span aria-hidden="true" class="line-numbers-rows
 
 <p><strong>方法二：</strong></p>
 <p>（1） 直接修改 &#x2F;etc&#x2F;sudoers 文件，找到下面一行，在root下面添加一行</p>
-<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">##</span> Allow root to run any commands anywhere</span>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span>Allow root to run any commands anywhere</span>
    root ALL=(ALL) ALL
    liduan ALL=(ALL) ALL<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="2-一句话创建root账户"><a href="#2-一句话创建root账户" class="headerlink" title="2.一句话创建root账户"></a>2.一句话创建root账户</h4><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">useradd -p "passwd" username -o -u 0 -g root
-<span class="token title important"><span class="token punctuation">#</span> 参数说明</span>
+<span class="token title important"><span class="token punctuation">#</span>参数说明</span>
 -p　　指定密码
 
 -u　　指定UID

